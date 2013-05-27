@@ -1,0 +1,303 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2DCB75A5175317E3000718F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB75A4175317E3000718F2 /* UIKit.framework */; };
+		2DCB75A7175317E3000718F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB75A6175317E3000718F2 /* Foundation.framework */; };
+		2DCB75A9175317E3000718F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB75A8175317E3000718F2 /* CoreGraphics.framework */; };
+		2DCB75AF175317E3000718F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB75AD175317E3000718F2 /* InfoPlist.strings */; };
+		2DCB75B1175317E3000718F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCB75B0175317E3000718F2 /* main.m */; };
+		2DCB75B5175317E3000718F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCB75B4175317E3000718F2 /* AppDelegate.m */; };
+		2DCB75B7175317E3000718F2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB75B6175317E3000718F2 /* Default.png */; };
+		2DCB75B9175317E3000718F2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB75B8175317E3000718F2 /* Default@2x.png */; };
+		2DCB75BB175317E3000718F2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB75BA175317E3000718F2 /* Default-568h@2x.png */; };
+		2DCB75BE175317E3000718F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCB75BD175317E3000718F2 /* ViewController.m */; };
+		2DCB75C1175317E3000718F2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB75BF175317E3000718F2 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2DCB75A1175317E3000718F2 /* LampIphoneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LampIphoneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DCB75A4175317E3000718F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2DCB75A6175317E3000718F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2DCB75A8175317E3000718F2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2DCB75AC175317E3000718F2 /* LampIphoneApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LampIphoneApp-Info.plist"; sourceTree = "<group>"; };
+		2DCB75AE175317E3000718F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2DCB75B0175317E3000718F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2DCB75B2175317E3000718F2 /* LampIphoneApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LampIphoneApp-Prefix.pch"; sourceTree = "<group>"; };
+		2DCB75B3175317E3000718F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2DCB75B4175317E3000718F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2DCB75B6175317E3000718F2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2DCB75B8175317E3000718F2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		2DCB75BA175317E3000718F2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2DCB75BC175317E3000718F2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2DCB75BD175317E3000718F2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2DCB75C0175317E3000718F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DCB759E175317E3000718F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCB75A5175317E3000718F2 /* UIKit.framework in Frameworks */,
+				2DCB75A7175317E3000718F2 /* Foundation.framework in Frameworks */,
+				2DCB75A9175317E3000718F2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DCB7598175317E3000718F2 = {
+			isa = PBXGroup;
+			children = (
+				2DCB75AA175317E3000718F2 /* LampIphoneApp */,
+				2DCB75A3175317E3000718F2 /* Frameworks */,
+				2DCB75A2175317E3000718F2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2DCB75A2175317E3000718F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DCB75A1175317E3000718F2 /* LampIphoneApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DCB75A3175317E3000718F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DCB75A4175317E3000718F2 /* UIKit.framework */,
+				2DCB75A6175317E3000718F2 /* Foundation.framework */,
+				2DCB75A8175317E3000718F2 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DCB75AA175317E3000718F2 /* LampIphoneApp */ = {
+			isa = PBXGroup;
+			children = (
+				2DCB75B3175317E3000718F2 /* AppDelegate.h */,
+				2DCB75B4175317E3000718F2 /* AppDelegate.m */,
+				2DCB75BC175317E3000718F2 /* ViewController.h */,
+				2DCB75BD175317E3000718F2 /* ViewController.m */,
+				2DCB75BF175317E3000718F2 /* ViewController.xib */,
+				2DCB75AB175317E3000718F2 /* Supporting Files */,
+			);
+			path = LampIphoneApp;
+			sourceTree = "<group>";
+		};
+		2DCB75AB175317E3000718F2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DCB75AC175317E3000718F2 /* LampIphoneApp-Info.plist */,
+				2DCB75AD175317E3000718F2 /* InfoPlist.strings */,
+				2DCB75B0175317E3000718F2 /* main.m */,
+				2DCB75B2175317E3000718F2 /* LampIphoneApp-Prefix.pch */,
+				2DCB75B6175317E3000718F2 /* Default.png */,
+				2DCB75B8175317E3000718F2 /* Default@2x.png */,
+				2DCB75BA175317E3000718F2 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DCB75A0175317E3000718F2 /* LampIphoneApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DCB75C4175317E3000718F2 /* Build configuration list for PBXNativeTarget "LampIphoneApp" */;
+			buildPhases = (
+				2DCB759D175317E3000718F2 /* Sources */,
+				2DCB759E175317E3000718F2 /* Frameworks */,
+				2DCB759F175317E3000718F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LampIphoneApp;
+			productName = LampIphoneApp;
+			productReference = 2DCB75A1175317E3000718F2 /* LampIphoneApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DCB7599175317E3000718F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = wangbo;
+			};
+			buildConfigurationList = 2DCB759C175317E3000718F2 /* Build configuration list for PBXProject "LampIphoneApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2DCB7598175317E3000718F2;
+			productRefGroup = 2DCB75A2175317E3000718F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DCB75A0175317E3000718F2 /* LampIphoneApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DCB759F175317E3000718F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCB75AF175317E3000718F2 /* InfoPlist.strings in Resources */,
+				2DCB75B7175317E3000718F2 /* Default.png in Resources */,
+				2DCB75B9175317E3000718F2 /* Default@2x.png in Resources */,
+				2DCB75BB175317E3000718F2 /* Default-568h@2x.png in Resources */,
+				2DCB75C1175317E3000718F2 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DCB759D175317E3000718F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCB75B1175317E3000718F2 /* main.m in Sources */,
+				2DCB75B5175317E3000718F2 /* AppDelegate.m in Sources */,
+				2DCB75BE175317E3000718F2 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2DCB75AD175317E3000718F2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DCB75AE175317E3000718F2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2DCB75BF175317E3000718F2 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DCB75C0175317E3000718F2 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2DCB75C2175317E3000718F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2DCB75C3175317E3000718F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2DCB75C5175317E3000718F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LampIphoneApp/LampIphoneApp-Prefix.pch";
+				INFOPLIST_FILE = "LampIphoneApp/LampIphoneApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2DCB75C6175317E3000718F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LampIphoneApp/LampIphoneApp-Prefix.pch";
+				INFOPLIST_FILE = "LampIphoneApp/LampIphoneApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DCB759C175317E3000718F2 /* Build configuration list for PBXProject "LampIphoneApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DCB75C2175317E3000718F2 /* Debug */,
+				2DCB75C3175317E3000718F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DCB75C4175317E3000718F2 /* Build configuration list for PBXNativeTarget "LampIphoneApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DCB75C5175317E3000718F2 /* Debug */,
+				2DCB75C6175317E3000718F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DCB7599175317E3000718F2 /* Project object */;
+}
