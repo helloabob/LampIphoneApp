@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "RootViewController.h"
 
 @implementation AppDelegate
 
@@ -23,8 +23,13 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    self.viewController = [[[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil] autorelease];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    nav.navigationBar.tintColor = [UIColor colorWithRed:91.0/255.0 green:199.0/255.0 blue:255.0/255.0 alpha:1];
+//    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor blueColor] forKey:UITextAttributeTextColor];
+//    nav.navigationBar.titleTextAttributes = dict;
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     return YES;
 }
