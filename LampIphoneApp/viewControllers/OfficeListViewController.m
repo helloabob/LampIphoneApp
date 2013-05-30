@@ -40,6 +40,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.title = @"Office List";
+    
     arrayMenu = [[NSArray alloc] initWithObjects:@"My Office", @"Electronics Lab - Lighting 2", nil];
     
     self.tblSystem.delegate = self;

@@ -10,6 +10,10 @@
 
 @interface OfficeDetailViewController : UIViewController
 
-- (IBAction)tt:(id)sender;
+- (IBAction)lightButtonTapped:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UILabel *lblDevice;
+@property (strong, nonatomic) IBOutlet UILabel *lblPower;
+
 
 @end

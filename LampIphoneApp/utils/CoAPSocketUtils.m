@@ -46,7 +46,7 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
     addr4.sin_len = sizeof(addr4);
     addr4.sin_family = AF_INET;
     addr4.sin_port = htons(5683);
-    char *addr = "192.168.11.61";
+    const char *addr = "192.168.11.61";
     addr4.sin_addr.s_addr = inet_addr(addr);
     // CFDataCreate()是用来将一个申请一个sizeof()大小的内存空间，并将一个buffer中的数据拷贝到新申请的内存空间中
     CFDataRef address = CFDataCreate(kCFAllocatorDefault, (UInt8 *)&addr4, sizeof(addr4));
@@ -76,10 +76,8 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
     strcpy(point, payload);
 
     sockfd = socket(AF_INET,SOCK_DGRAM,0);
-    NSLog(@"result:%lu",strlen(buffer));
-    if( sockfd< 0){
-//    　　 NSLog(@"error");
-        NSLog(@"aaaaaa");
+    if(sockfd< 0){
+        NSLog(@"error in creating socket.");
         return;
     }
     bzero(&addr, sizeof(addr));
@@ -90,7 +88,6 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
     if (res == -1) {
         NSLog(@"error in sendto");
     }
-    NSLog(@"has sended");
 }
 
 - (void) sendMessage {

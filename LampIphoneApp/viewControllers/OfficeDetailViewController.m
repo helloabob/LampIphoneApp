@@ -14,6 +14,16 @@
 
 @implementation OfficeDetailViewController
 
+@synthesize lblDevice = _lblDevice;
+@synthesize lblPower = _lblPower;
+
+- (void)dealloc {
+    self.lblPower = nil;
+    self.lblDevice = nil;
+    NSLog(@"detail_dealloc");
+    [super dealloc];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +37,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"Office Layout";
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,8 +46,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)tt:(id)sender {
-    NSLog(@"dddd");
+- (IBAction)lightButtonTapped:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    switch (btn.tag) {
+        case 1:
+            //first light.
+            self.lblDevice.text = @"PowerBalance";
+            self.lblPower.text = [NSString stringWithFormat:@"%.2f(w)", CalculatePowerRate(100)];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

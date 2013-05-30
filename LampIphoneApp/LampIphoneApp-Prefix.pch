@@ -14,3 +14,13 @@
 #endif
 
 #define CalculatePowerRate(a) (0.086*a+0.103)
+
+
+/**********device database keys*************/
+#define DeviceNameKey           @"deviceNameKey"
+#define DimmingLevelKey         @"dimmingLevelKey"
+#define LastOnTimeIntervalKey   @"lastOnTimeIntervalKey"
+
+#define DeviceUserDefaultKey    @"deviceUserDefaultKey"
+#define OfficeUserDefaultKey    @"officeUserDefaultKey"
+/**********end*************/

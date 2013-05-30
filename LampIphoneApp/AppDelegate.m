@@ -10,6 +10,8 @@
 
 #import "RootViewController.h"
 
+#import "ConfigurationManager.h"
+
 @implementation AppDelegate
 
 - (void)dealloc
@@ -31,6 +33,10 @@
 //    nav.navigationBar.titleTextAttributes = dict;
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
+    
+    //register user default data.
+    [ConfigurationManager registerDefaultData];
+    
     return YES;
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DC5756D17559C3D009621EB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5756C17559C3D009621EB /* icon.png */; };
+		2DC575761755DD96009621EB /* light_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC575751755DD96009621EB /* light_icon.png */; };
 		2DCB75A5175317E3000718F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB75A4175317E3000718F2 /* UIKit.framework */; };
 		2DCB75A7175317E3000718F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB75A6175317E3000718F2 /* Foundation.framework */; };
 		2DCB75A9175317E3000718F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB75A8175317E3000718F2 /* CoreGraphics.framework */; };
@@ -40,10 +41,14 @@
 		2DCB75FA1754497F000718F2 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCB75F91754497F000718F2 /* AsyncUdpSocket.m */; };
 		2DCB75FD17544C45000718F2 /* IPAdress.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCB75FC17544C45000718F2 /* IPAdress.c */; };
 		2DCB760017548A68000718F2 /* CoAPSocketUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCB75FF17548A68000718F2 /* CoAPSocketUtils.m */; };
+		2DE27F5A1756E5AD00AF109E /* highlight_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE27F591756E5AD00AF109E /* highlight_back.png */; };
+		2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2DC5756C17559C3D009621EB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		2DC5756E1755CB1C009621EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		2DC575751755DD96009621EB /* light_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_icon.png; sourceTree = "<group>"; };
 		2DCB75A1175317E3000718F2 /* LampIphoneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LampIphoneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCB75A4175317E3000718F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2DCB75A6175317E3000718F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -90,6 +95,9 @@
 		2DCB75FC17544C45000718F2 /* IPAdress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IPAdress.c; sourceTree = "<group>"; };
 		2DCB75FE17548A68000718F2 /* CoAPSocketUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoAPSocketUtils.h; sourceTree = "<group>"; };
 		2DCB75FF17548A68000718F2 /* CoAPSocketUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoAPSocketUtils.m; sourceTree = "<group>"; };
+		2DE27F591756E5AD00AF109E /* highlight_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight_back.png; sourceTree = "<group>"; };
+		2DE27F5B1756E7ED00AF109E /* ConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationManager.h; sourceTree = "<group>"; };
+		2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +196,8 @@
 		2DCB75CD17531BC6000718F2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DE27F591756E5AD00AF109E /* highlight_back.png */,
+				2DC575751755DD96009621EB /* light_icon.png */,
 				2DC5756C17559C3D009621EB /* icon.png */,
 				2DCB75F017535580000718F2 /* myoffice_layout.png */,
 				2DCB75E417534527000718F2 /* office_logo.png */,
@@ -208,6 +218,8 @@
 				2DCB75F417544513000718F2 /* CoAPSocket.m */,
 				2DCB75FE17548A68000718F2 /* CoAPSocketUtils.h */,
 				2DCB75FF17548A68000718F2 /* CoAPSocketUtils.m */,
+				2DE27F5B1756E7ED00AF109E /* ConfigurationManager.h */,
+				2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -266,6 +278,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 2DCB7598175317E3000718F2;
 			productRefGroup = 2DCB75A2175317E3000718F2 /* Products */;
@@ -300,6 +313,8 @@
 				2DCB75EF17534EAE000718F2 /* OfficeDetailViewController.xib in Resources */,
 				2DCB75F117535580000718F2 /* myoffice_layout.png in Resources */,
 				2DC5756D17559C3D009621EB /* icon.png in Resources */,
+				2DC575761755DD96009621EB /* light_icon.png in Resources */,
+				2DE27F5A1756E5AD00AF109E /* highlight_back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +337,7 @@
 				2DCB75FA1754497F000718F2 /* AsyncUdpSocket.m in Sources */,
 				2DCB75FD17544C45000718F2 /* IPAdress.c in Sources */,
 				2DCB760017548A68000718F2 /* CoAPSocketUtils.m in Sources */,
+				2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +348,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DCB75AE175317E3000718F2 /* en */,
+				2DC5756E1755CB1C009621EB /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

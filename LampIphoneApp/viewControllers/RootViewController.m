@@ -41,9 +41,6 @@ const char *ip_addr = "192.168.11.52";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    CoAPSocketUtils *uu = [[CoAPSocketUtils alloc] init];
-//    [uu testMsg];
-//    [uu sendSocket:"{\"o\":false}"];
     
     int cc = 145;
 //    char p[8];
