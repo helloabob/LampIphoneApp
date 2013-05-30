@@ -8,6 +8,13 @@
 
 #import "SystemManagerViewController.h"
 
+#import "DeviceConfigViewController.h"
+
+enum {
+    PresetConfigRow = 0,
+    DeviceConfigRow,
+};
+
 @interface SystemManagerViewController () {
     NSArray *arrayMenu;
 }
@@ -38,7 +45,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    arrayMenu = [[NSArray alloc] initWithObjects:@"Scene Configuration", @"Device Configuration", nil];
+    self.title = @"System Config";
+    
+    arrayMenu = [[NSArray alloc] initWithObjects:@"Preset Configuration", @"Device Configuration", nil];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
@@ -78,6 +87,17 @@
     cell.textLabel.text = [arrayMenu objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    
+    if (indexPath.row == DeviceConfigRow) {
+        DeviceConfigViewController *deviceViewController = [[DeviceConfigViewController alloc] init];
+        [self.navigationController pushViewController:deviceViewController animated:YES];
+        [deviceViewController release];
+    }
 }
 
 @end

@@ -12,4 +12,11 @@
 
 + (void)registerDefaultData;
 
++ (id)objectForKey:(NSString *)key;
+
++ (void)setObject:(id)object forKey:(NSString *)key;
+
++ (void)changeLightDimming:(NSNumber *)value forLightName:(NSString *)lightName;
+
++ (void)updateLastTurnOnTimeInterval:(BOOL)onOrOff forLightName:(NSString *)lightName;
 @end

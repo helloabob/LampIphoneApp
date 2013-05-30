@@ -60,6 +60,11 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
 
 + (void)sendSocket:(const char *)payload withIP:(const char *)ip {
     int sockfd;
+    sockfd = socket(AF_INET,SOCK_DGRAM,0);
+    if(sockfd< 0){
+        NSLog(@"error in creating socket:%d.",sockfd);
+        return;
+    }
     struct sockaddr_in addr;
     char buffer[256];
     memset(buffer, 0, 256);
@@ -74,12 +79,7 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
     
     char *point = (char *)(buffer+8);
     strcpy(point, payload);
-
-    sockfd = socket(AF_INET,SOCK_DGRAM,0);
-    if(sockfd< 0){
-        NSLog(@"error in creating socket.");
-        return;
-    }
+    
     bzero(&addr, sizeof(addr));
     addr.sin_family = AF_INET;
     addr.sin_port = htons(server_port);
@@ -88,6 +88,9 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
     if (res == -1) {
         NSLog(@"error in sendto");
     }
+//    free(buffer);
+    point = NULL;
+    close(sockfd);
 }
 
 - (void) sendMessage {

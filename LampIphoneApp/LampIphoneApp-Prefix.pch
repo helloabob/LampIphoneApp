@@ -13,14 +13,29 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#define ChangeDimmingValue(value,ip) ([CoAPSocketUtils sendSocket:[[NSString stringWithFormat:@"{\"b\":%d}",value] UTF8String] withIP:ip])
+#define TurnOnOff(value,ip) ([CoAPSocketUtils sendSocket:[[NSString stringWithFormat:@"{\"o\":%@}",value] UTF8String] withIP:ip])
+
+#define ip_addr "192.168.11.54"
+
 #define CalculatePowerRate(a) (0.086*a+0.103)
 
+#define PowerBalanceTypeName    @"powerBalance"
+#define LuxSpaceTypeName        @"luxSpace"
 
 /**********device database keys*************/
 #define DeviceNameKey           @"deviceNameKey"
 #define DimmingLevelKey         @"dimmingLevelKey"
 #define LastOnTimeIntervalKey   @"lastOnTimeIntervalKey"
+#define DeviceTypeKey           @"deviceTypeKey"
+#define DeviceIp                @"deviceIp"
 
 #define DeviceUserDefaultKey    @"deviceUserDefaultKey"
+/**********end*************/
+
+/**********office database keys*************/
+#define OfficeNameKey           @"officeNameKey"
+#define OfficeDeviceNameKey     @"officeDeviceNameKey"
+
 #define OfficeUserDefaultKey    @"officeUserDefaultKey"
 /**********end*************/

@@ -9,6 +9,7 @@
 #import "OfficeListViewController.h"
 
 #import "OfficeDetailViewController.h"
+#import "ConfigurationManager.h"
 
 @interface OfficeListViewController () {
     NSArray *arrayMenu;
@@ -42,7 +43,9 @@
     
     self.title = @"Office List";
     
-    arrayMenu = [[NSArray alloc] initWithObjects:@"My Office", @"Electronics Lab - Lighting 2", nil];
+//    arrayMenu = [[NSArray alloc] initWithObjects:@"My Office", @"Electronics Lab - Lighting 2", nil];
+    
+    arrayMenu = [ConfigurationManager objectForKey:OfficeUserDefaultKey];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
@@ -66,7 +69,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    return arrayMenu.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,7 +83,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = [arrayMenu objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
     
     return cell;
 }
@@ -90,6 +93,8 @@
     // Navigation logic may go here. Create and push another view controller.
     
      OfficeDetailViewController *detailViewController = [[OfficeDetailViewController alloc] init];
+    detailViewController.title = [[arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
+    detailViewController.roomIndex = indexPath.row;
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];

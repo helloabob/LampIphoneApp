@@ -25,8 +25,6 @@
 
 @implementation RootViewController
 
-const char *ip_addr = "192.168.11.52";
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -88,28 +86,32 @@ const char *ip_addr = "192.168.11.52";
     UIButton *btn = (UIButton *)sender;
     switch (btn.tag) {
         case 1:
-            [CoAPSocketUtils sendSocket:"{\"o\":true}" withIP:ip_addr];
+            TurnOnOff(@"true", ip_addr);
+//            [CoAPSocketUtils sendSocket:"{\"o\":true}" withIP:ip_addr];
             break;
         case 2:
-            [CoAPSocketUtils sendSocket:"{\"o\":false}" withIP:ip_addr];
+            TurnOnOff(@"false", ip_addr);
+//            [CoAPSocketUtils sendSocket:"{\"o\":false}" withIP:ip_addr];
             break;
         case 3:
-            [CoAPSocketUtils sendSocket:"{\"b\":55}" withIP:ip_addr];
+            ChangeDimmingValue(55, ip_addr);
+//            [CoAPSocketUtils sendSocket:"{\"b\":55}" withIP:ip_addr];
             break;
         case 4:
-            [CoAPSocketUtils sendSocket:"{\"b\":110}" withIP:ip_addr];
+            ChangeDimmingValue(110, ip_addr);
+//            [CoAPSocketUtils sendSocket:"{\"b\":110}" withIP:ip_addr];
             break;
         case 5:
-            [CoAPSocketUtils sendSocket:"{\"b\":165}" withIP:ip_addr];
+            ChangeDimmingValue(165, ip_addr);
+//            [CoAPSocketUtils sendSocket:"{\"b\":165}" withIP:ip_addr];
             break;
         case 6:
-            [CoAPSocketUtils sendSocket:"{\"b\":220}" withIP:ip_addr];
+            ChangeDimmingValue(220, ip_addr);
+//            [CoAPSocketUtils sendSocket:"{\"b\":220}" withIP:ip_addr];
             break;
         default:
             break;
     }
-    
-//    [[CoAPSocket sharedInstance] sendMassage:@"{\"b\":220}"];
 }
 
 - (void)gotoOfficeList {
