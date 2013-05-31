@@ -88,10 +88,26 @@
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *_headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 35)];
-    _headerView.backgroundColor = [UIColor lightGrayColor];
-    return _headerView;
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 35.0f;
+//}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UIView *_headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 35)];
+//    _headerView.backgroundColor = [UIColor lightGrayColor];
+//    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _headerView.frame.size.width, _headerView.frame.size.height)];
+//    lbl.text = @"Office List";
+//    [lbl setFont:[UIFont systemFontOfSize:13.0f]];
+//    lbl.backgroundColor = [UIColor clearColor];
+//    [lbl setTextAlignment:NSTextAlignmentCenter];
+//    [lbl setTextColor:[UIColor whiteColor]];
+//    [_headerView addSubview:lbl];
+//    [lbl release];
+//    return [_headerView autorelease];
+//}
+
+- (void)unselectCurrentRow {
+    [self.tblSystem deselectRowAtIndexPath:[self.tblSystem indexPathForSelectedRow] animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,6 +122,7 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
     
+    [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0.5f];
 }
 
 @end

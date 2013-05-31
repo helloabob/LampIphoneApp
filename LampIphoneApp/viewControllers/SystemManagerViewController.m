@@ -8,7 +8,7 @@
 
 #import "SystemManagerViewController.h"
 
-#import "DeviceListViewController.h"
+#import "OfficeDetailViewController.h"
 
 enum {
     PresetConfigRow = 0,
@@ -94,9 +94,16 @@ enum {
     // Navigation logic may go here. Create and push another view controller.
     
     if (indexPath.row == DeviceConfigRow) {
-        DeviceListViewController *deviceViewController = [[DeviceListViewController alloc] init];
-        [self.navigationController pushViewController:deviceViewController animated:YES];
-        [deviceViewController release];
+//        DeviceListViewController *deviceViewController = [[DeviceListViewController alloc] init];
+//        [self.navigationController pushViewController:deviceViewController animated:YES];
+//        [deviceViewController release];
+//        OfficeDetailViewController *detailViewController = [[OfficeDetailViewController alloc] init];
+//        detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
+//        detailViewController.roomIndex = indexPath.row;
+//        // ...
+//        // Pass the selected object to the new view controller.
+//        [self.navigationController pushViewController:detailViewController animated:YES];
+//        [detailViewController release];
     }
 }
 
