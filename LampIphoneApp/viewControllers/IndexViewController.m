@@ -1,33 +1,26 @@
 //
-//  OfficeListViewController.m
+//  IndexViewController.m
 //  LampIphoneApp
 //
-//  Created by wangbo on 13-5-27.
+//  Created by wangbo on 13-5-31.
 //  Copyright (c) 2013年 wangbo. All rights reserved.
 //
 
-#import "OfficeListViewController.h"
+#import "IndexViewController.h"
 
-#import "OfficeDetailViewController.h"
-#import "ConfigurationManager.h"
+#import "RootViewController.h"
 
-@interface OfficeListViewController () {
+@interface IndexViewController () {
     
 }
 
 @end
 
-@implementation OfficeListViewController
+@implementation IndexViewController
 
 @synthesize tblSystem = _tblSystem;
 
 @synthesize arrayMenu = _arrayMenu;
-
-- (void)dealloc {
-    self.tblSystem = nil;
-    self.arrayMenu = nil;
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,15 +35,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"PHILIPS";
+    self.view.backgroundColor = app_default_background_color;
     
-    self.title = @"Office List";
+    UIButton *btn = [UIButton buttonWithType:110];
+    btn.tintColor = [UIColor blueColor];
+    btn.frame = CGRectMake(100, 200, 120, 40);
+//    btn.titleLabel.text = @"Start";
+    [btn setTitle:@"Start" forState:UIControlStateNormal];
+    [self.view addSubview:btn];
     
-//    arrayMenu = [[NSArray alloc] initWithObjects:@"My Office", @"Electronics Lab - Lighting 2", nil];
-    
-    self.arrayMenu = [ConfigurationManager objectForKey:OfficeUserDefaultKey];
+    self.arrayMenu = [NSArray arrayWithObjects:@"my office",@"Electronics labs - lighting 2", nil];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
+//    self.tblSystem.backgroundColor = app_default_background_color;
     
 }
 
@@ -85,22 +84,27 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
-    
+    cell.textLabel.text = [self.arrayMenu objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *_headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 35)];
+    _headerView.backgroundColor = [UIColor lightGrayColor];
+    return _headerView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
     
-     OfficeDetailViewController *detailViewController = [[OfficeDetailViewController alloc] init];
-    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
-    detailViewController.roomIndex = indexPath.row;
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
+    RootViewController *detailViewController = [[RootViewController alloc] init];
+//    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
+    detailViewController.title = [self.arrayMenu objectAtIndex:indexPath.row];
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
     
 }
 

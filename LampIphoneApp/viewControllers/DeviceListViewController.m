@@ -1,26 +1,24 @@
 //
-//  OfficeListViewController.m
+//  DeviceListViewController.m
 //  LampIphoneApp
 //
-//  Created by wangbo on 13-5-27.
+//  Created by wangbo on 13-5-31.
 //  Copyright (c) 2013年 wangbo. All rights reserved.
 //
 
-#import "OfficeListViewController.h"
+#import "DeviceListViewController.h"
 
-#import "OfficeDetailViewController.h"
+#import "DeviceConfigViewController.h"
+
 #import "ConfigurationManager.h"
 
-@interface OfficeListViewController () {
-    
-}
+@interface DeviceListViewController ()
 
 @end
 
-@implementation OfficeListViewController
+@implementation DeviceListViewController
 
 @synthesize tblSystem = _tblSystem;
-
 @synthesize arrayMenu = _arrayMenu;
 
 - (void)dealloc {
@@ -42,16 +40,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"Device Config";
     
-    self.title = @"Office List";
+    //    arrayMenu = [[NSArray alloc] initWithObjects:@"My Office", @"Electronics Lab - Lighting 2", nil];
     
-//    arrayMenu = [[NSArray alloc] initWithObjects:@"My Office", @"Electronics Lab - Lighting 2", nil];
-    
-    self.arrayMenu = [ConfigurationManager objectForKey:OfficeUserDefaultKey];
+    self.arrayMenu = [ConfigurationManager objectForKey:DeviceUserDefaultKey];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,22 +81,23 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
+    cell.textLabel.text = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:DeviceNameKey];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
+    // Navigation logic may go here. Create and push anothqer view controller.
     
-     OfficeDetailViewController *detailViewController = [[OfficeDetailViewController alloc] init];
-    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
-    detailViewController.roomIndex = indexPath.row;
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
+    DeviceConfigViewController *detailViewController = [[DeviceConfigViewController alloc] init];
+    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:DeviceNameKey];
+//    detailViewController.roomIndex = indexPath.row;
+    // ...
+    // Pass the selected object to the new view controller.
+//    [self.navigationController presentViewController:detailViewController animated:YES completion:nil];
+    [self presentViewController:detailViewController animated:YES completion:nil];
+    [detailViewController release];
     
 }
 

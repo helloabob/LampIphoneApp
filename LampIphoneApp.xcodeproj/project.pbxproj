@@ -45,6 +45,14 @@
 		2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */; };
 		2DE27F611757233D00AF109E /* DeviceConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */; };
 		2DE27F621757233D00AF109E /* DeviceConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DE27F601757233D00AF109E /* DeviceConfigViewController.xib */; };
+		2DFB50D917584D4D00F02D49 /* DeviceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFB50D717584D4D00F02D49 /* DeviceListViewController.m */; };
+		2DFB50DA17584D4D00F02D49 /* DeviceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DFB50D817584D4D00F02D49 /* DeviceListViewController.xib */; };
+		2DFB50DE1758903A00F02D49 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFB50DC1758903900F02D49 /* IndexViewController.m */; };
+		2DFB50DF1758903A00F02D49 /* IndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DFB50DD1758903A00F02D49 /* IndexViewController.xib */; };
+		2DFB50E3175891EC00F02D49 /* launch-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFB50E0175891EC00F02D49 /* launch-568h@2x.png */; };
+		2DFB50E4175891EC00F02D49 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFB50E1175891EC00F02D49 /* launch.png */; };
+		2DFB50E5175891EC00F02D49 /* launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFB50E2175891EC00F02D49 /* launch@2x.png */; };
+		2DFB50E7175893A400F02D49 /* scan_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFB50E6175893A400F02D49 /* scan_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +111,16 @@
 		2DE27F5E1757233D00AF109E /* DeviceConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceConfigViewController.h; sourceTree = "<group>"; };
 		2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceConfigViewController.m; sourceTree = "<group>"; };
 		2DE27F601757233D00AF109E /* DeviceConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceConfigViewController.xib; sourceTree = "<group>"; };
+		2DFB50D617584D4D00F02D49 /* DeviceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceListViewController.h; sourceTree = "<group>"; };
+		2DFB50D717584D4D00F02D49 /* DeviceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceListViewController.m; sourceTree = "<group>"; };
+		2DFB50D817584D4D00F02D49 /* DeviceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceListViewController.xib; sourceTree = "<group>"; };
+		2DFB50DB1758903900F02D49 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
+		2DFB50DC1758903900F02D49 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
+		2DFB50DD1758903A00F02D49 /* IndexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexViewController.xib; sourceTree = "<group>"; };
+		2DFB50E0175891EC00F02D49 /* launch-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-568h@2x.png"; sourceTree = "<group>"; };
+		2DFB50E1175891EC00F02D49 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		2DFB50E2175891EC00F02D49 /* launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch@2x.png"; sourceTree = "<group>"; };
+		2DFB50E6175893A400F02D49 /* scan_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +184,9 @@
 		2DCB75AB175317E3000718F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2DFB50E0175891EC00F02D49 /* launch-568h@2x.png */,
+				2DFB50E1175891EC00F02D49 /* launch.png */,
+				2DFB50E2175891EC00F02D49 /* launch@2x.png */,
 				2DCB75AC175317E3000718F2 /* LampIphoneApp-Info.plist */,
 				2DCB75AD175317E3000718F2 /* InfoPlist.strings */,
 				2DCB75B0175317E3000718F2 /* main.m */,
@@ -197,6 +218,12 @@
 				2DE27F5E1757233D00AF109E /* DeviceConfigViewController.h */,
 				2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */,
 				2DE27F601757233D00AF109E /* DeviceConfigViewController.xib */,
+				2DFB50D617584D4D00F02D49 /* DeviceListViewController.h */,
+				2DFB50D717584D4D00F02D49 /* DeviceListViewController.m */,
+				2DFB50D817584D4D00F02D49 /* DeviceListViewController.xib */,
+				2DFB50DB1758903900F02D49 /* IndexViewController.h */,
+				2DFB50DC1758903900F02D49 /* IndexViewController.m */,
+				2DFB50DD1758903A00F02D49 /* IndexViewController.xib */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -204,6 +231,7 @@
 		2DCB75CD17531BC6000718F2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DFB50E6175893A400F02D49 /* scan_icon.png */,
 				2DE27F591756E5AD00AF109E /* highlight_back.png */,
 				2DC575751755DD96009621EB /* light_icon.png */,
 				2DC5756C17559C3D009621EB /* icon.png */,
@@ -324,6 +352,12 @@
 				2DC575761755DD96009621EB /* light_icon.png in Resources */,
 				2DE27F5A1756E5AD00AF109E /* highlight_back.png in Resources */,
 				2DE27F621757233D00AF109E /* DeviceConfigViewController.xib in Resources */,
+				2DFB50DA17584D4D00F02D49 /* DeviceListViewController.xib in Resources */,
+				2DFB50DF1758903A00F02D49 /* IndexViewController.xib in Resources */,
+				2DFB50E3175891EC00F02D49 /* launch-568h@2x.png in Resources */,
+				2DFB50E4175891EC00F02D49 /* launch.png in Resources */,
+				2DFB50E5175891EC00F02D49 /* launch@2x.png in Resources */,
+				2DFB50E7175893A400F02D49 /* scan_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +382,8 @@
 				2DCB760017548A68000718F2 /* CoAPSocketUtils.m in Sources */,
 				2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */,
 				2DE27F611757233D00AF109E /* DeviceConfigViewController.m in Sources */,
+				2DFB50D917584D4D00F02D49 /* DeviceListViewController.m in Sources */,
+				2DFB50DE1758903A00F02D49 /* IndexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

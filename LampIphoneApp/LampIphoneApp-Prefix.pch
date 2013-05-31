@@ -18,6 +18,8 @@
 
 #define ip_addr "192.168.11.54"
 
+#define app_default_background_color [UIColor colorWithRed:211.0/255.0 green:215.0/255.0 blue:212.0/255.0 alpha:1.0f]
+
 #define CalculatePowerRate(a) (0.086*a+0.103)
 
 #define PowerBalanceTypeName    @"powerBalance"

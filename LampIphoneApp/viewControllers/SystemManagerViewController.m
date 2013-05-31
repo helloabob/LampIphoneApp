@@ -8,7 +8,7 @@
 
 #import "SystemManagerViewController.h"
 
-#import "DeviceConfigViewController.h"
+#import "DeviceListViewController.h"
 
 enum {
     PresetConfigRow = 0,
@@ -94,7 +94,7 @@ enum {
     // Navigation logic may go here. Create and push another view controller.
     
     if (indexPath.row == DeviceConfigRow) {
-        DeviceConfigViewController *deviceViewController = [[DeviceConfigViewController alloc] init];
+        DeviceListViewController *deviceViewController = [[DeviceListViewController alloc] init];
         [self.navigationController pushViewController:deviceViewController animated:YES];
         [deviceViewController release];
     }

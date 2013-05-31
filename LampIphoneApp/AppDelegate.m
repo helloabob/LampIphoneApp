@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "RootViewController.h"
+#import "IndexViewController.h"
 
 #import "ConfigurationManager.h"
 
@@ -25,7 +25,7 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil] autorelease];
+    self.viewController = [[[IndexViewController alloc] initWithNibName:@"IndexViewController" bundle:nil] autorelease];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     nav.navigationBar.tintColor = [UIColor colorWithRed:91.0/255.0 green:199.0/255.0 blue:255.0/255.0 alpha:1];

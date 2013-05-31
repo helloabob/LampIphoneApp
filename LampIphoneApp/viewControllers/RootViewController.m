@@ -25,6 +25,11 @@
 
 @implementation RootViewController
 
+- (void)dealloc {
+    NSLog(@"root_view_controller_dealloc");
+    [super dealloc];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,6 +44,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.view.backgroundColor = app_default_background_color;
     
     int cc = 145;
 //    char p[8];
@@ -60,15 +66,23 @@
     
     NSLog(@"%.2f",CalculatePowerRate(10));
     
-    self.title = @"PHILIPS";
+//    self.title = @"PHILIPS";
     
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStyleDone target:self action:@selector(gotoSettingView)];
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStyleDone target:self action:@selector(gotoSettingView)];
+//    self.navigationItem.rightBarButtonItem = item;
+    
+    UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnRight setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
+    btnRight.frame = CGRectMake(0, 0, 30, 30);
+    [btnRight addTarget:self action:@selector(gotoSettingView) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
     self.navigationItem.rightBarButtonItem = item;
+    
     [item release];
     
-    UIBarButtonItem *itemHome = [[UIBarButtonItem alloc] initWithTitle:@"Office List" style:UIBarButtonItemStyleDone target:self action:@selector(gotoOfficeList)];
-    self.navigationItem.leftBarButtonItem = itemHome;
-    [itemHome release];
+//    UIBarButtonItem *itemHome = [[UIBarButtonItem alloc] initWithTitle:@"Office List" style:UIBarButtonItemStyleDone target:self action:@selector(gotoOfficeList)];
+//    self.navigationItem.leftBarButtonItem = itemHome;
+//    [itemHome release];
     
 //    NSLog(@"frame:%@",NSStringFromCGRect(self.view.bounds));
 //    

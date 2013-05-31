@@ -45,13 +45,9 @@ static BOOL isOn;
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+- (void)getLightInfo {
     NSArray *array = [[[ConfigurationManager objectForKey:OfficeUserDefaultKey] objectAtIndex:self.roomIndex] objectForKey:OfficeDeviceNameKey];
     NSArray *devices = [ConfigurationManager objectForKey:DeviceUserDefaultKey];
-    
     self.lightArray = [NSMutableArray array];
     for (NSString *lightName in array) {
         for (NSDictionary *dict in devices) {
@@ -61,7 +57,22 @@ static BOOL isOn;
             }
         }
     }
-    [self.sliDimming addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+    self.view.backgroundColor = app_default_background_color;
+    
+    [self getLightInfo];
+    
+    lightIndex = -1;
+    
+//    [self.sliDimming addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.sliDimming addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+    self.sliDimming.enabled = NO;
     lastDimmingValue = 110;
 }
 
@@ -83,7 +94,7 @@ static BOOL isOn;
         ChangeDimmingValue(value, ip_addr);
 //        [ConfigurationManager changeLightDimming:[NSNumber numberWithInt:value] forLightName:self.title];
     }
-    [self updateInfo];
+    [self updateViewText];
     
     //todo to prevent change dimming value too fast
 //    int currentDimmingValue = self.sliDimming.value;
@@ -93,25 +104,44 @@ static BOOL isOn;
 //    CoAPSocketUtils sendSocket:<#(const char *)#> withIP:<#(const char *)#>
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [ConfigurationManager changeLightDimming:[NSNumber numberWithInt:lastDimmingValue] forLightName:self.lblDevice.text];
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateInfo {
+- (void)updateViewText {
     self.lblDimming.text = [NSString stringWithFormat:@"%d",lastDimmingValue];
     self.lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(lastDimmingValue)];
     
 }
 
 - (IBAction)lightButtonTapped:(id)sender {
+    
+    
+    self.sliDimming.enabled = YES;
     UIButton *btn = (UIButton *)sender;
+    if (self.lightArray.count < btn.tag) {
+        return;
+    }
+    
+    if (lightIndex != -1 && lightIndex != btn.tag - 1) {
+        [ConfigurationManager changeLightDimming:[NSNumber numberWithInt:lastDimmingValue] forLightName:self.lblDevice.text];
+    }
+    
     lightIndex = btn.tag - 1;
+    [self getLightInfo];
+    
     self.lblDevice.text = [[self.lightArray objectAtIndex:lightIndex] objectForKey:DeviceNameKey];
     CGFloat dimming = [[[self.lightArray objectAtIndex:lightIndex] objectForKey:DimmingLevelKey] doubleValue];
     self.lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(dimming)];
     self.lblDimming.text = [NSString stringWithFormat:@"%d",(int)dimming];
+    self.sliDimming.value = dimming;
 }
 
 @end
