@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) IndexViewController *viewController;
 
+@property (strong, nonatomic) NSString *officeName;
+
 @end

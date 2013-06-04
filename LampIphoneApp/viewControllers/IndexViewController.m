@@ -10,13 +10,19 @@
 
 #import "RootViewController.h"
 
+#import "ConfigurationManager.h"
+
+#import "AppDelegate.h"
+
 @interface IndexViewController () {
-    
+//    NSString *scanResult;
 }
 
 @end
 
 @implementation IndexViewController
+
+@synthesize scanResult = _scanResult;
 
 @synthesize tblSystem = _tblSystem;
 
@@ -31,6 +37,14 @@
     return self;
 }
 
+- (void)dealloc {
+    self.tblSystem.delegate = nil;
+    self.tblSystem.dataSource = nil;
+    self.tblSystem = nil;
+    self.arrayMenu = nil;
+    [super dealloc];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,15 +56,118 @@
     btn.tintColor = [UIColor blueColor];
     btn.frame = CGRectMake(100, 200, 120, 40);
 //    btn.titleLabel.text = @"Start";
+    [btn addTarget:self action:@selector(gotoScan) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitle:@"Start" forState:UIControlStateNormal];
     [self.view addSubview:btn];
     
-    self.arrayMenu = [NSArray arrayWithObjects:@"my office",@"Electronics labs - lighting 2", nil];
+//    self.arrayMenu = [NSArray arrayWithObjects:@"my office",@"Electronics labs", nil];
+    
+    self.arrayMenu = [ConfigurationManager objectForKey:OfficeUserDefaultKey];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
 //    self.tblSystem.backgroundColor = app_default_background_color;
     
+}
+
+- (void)gotoScan {
+    // ADD: present a barcode reader that scans from the camera feed
+    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    reader.readerDelegate = self;
+//    reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+    
+    ZBarImageScanner *scanner = reader.scanner;
+    // TODO: (optional) additional reader configuration here
+    
+    // EXAMPLE: disable rarely used I2/5 to improve performance
+    [scanner setSymbology: ZBAR_I25
+                   config: ZBAR_CFG_ENABLE
+                       to: 0];
+    
+//    for (UIView *view in [[reader.view.subviews objectAtIndex:0] subviews]) {
+//        NSLog(@"view:%@",view);
+//    }
+    
+//    UIBarButtonItem *ii = [[UIBarButtonItem alloc] init];
+    
+    
+    for (id vv in reader.view.subviews) {
+        if ([vv isKindOfClass:[UIView class]]) {
+            for (id dd in ((UIView *)vv).subviews) {
+                if ([dd isKindOfClass:[UIToolbar class]]) {
+                    for (id aa in ((UIView *)dd).subviews) {
+                        if ([aa isKindOfClass:[UIButton class]]) {
+                            [aa removeFromSuperview];
+                        }
+                        if ([aa isKindOfClass:[NSClassFromString(@"UIToolbarTextButton") class]]) {
+                            NSLog(@"dd:%@",aa);
+//                            [aa setTitle:@"Cancel"];
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+//    for (UIButton *btn in reader.view.subviews) {
+//        NSLog(@"button:%@",btn);
+//    }
+    
+    // present and release the controller
+//    [self presentModalViewController: reader
+//                            animated: YES];
+    
+    [self presentViewController:reader animated:YES completion:nil];
+    [reader release];
+}
+
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    // ADD: get the decode results
+    id<NSFastEnumeration> results =
+    [info objectForKey: ZBarReaderControllerResults];
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        // EXAMPLE: just grab the first barcode
+        break;
+    
+    // EXAMPLE: do something useful with the barcode data
+//    resultText.text = symbol.data;
+    
+    self.scanResult = symbol.data;
+    
+    NSLog(@"scan:%@",symbol.data);
+    
+    // EXAMPLE: do something useful with the barcode image
+//    resultImage.image =
+//    [info objectForKey: UIImagePickerControllerOriginalImage];
+    
+    // ADD: dismiss the controller (NB dismiss from the *reader*!)
+//    [reader dismissModalViewControllerAnimated: YES];
+    [reader dismissViewControllerAnimated:YES completion:^{
+        [self checkScan];
+    }];
+}
+
+- (void)checkScan {
+    BOOL canFind = NO;
+    for (NSDictionary *dict in self.arrayMenu) {
+        if ([[dict objectForKey:OfficeNameKey] isEqualToString:self.scanResult]) {
+            canFind = YES;
+            break;
+        }
+    }
+    if (canFind) {
+        [Common setCurrentOfficeName:self.scanResult];
+        RootViewController *detailViewController = [[RootViewController alloc] init];
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [detailViewController release];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[NSString stringWithFormat:@"Barcode may be wrong!result:%@",self.scanResult] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,7 +201,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = [self.arrayMenu objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
     return cell;
 }
 
@@ -116,7 +233,12 @@
     
     RootViewController *detailViewController = [[RootViewController alloc] init];
 //    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
-    detailViewController.title = [self.arrayMenu objectAtIndex:indexPath.row];
+//    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
+//    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    app.officeName = detailViewController.title;
+
+    NSString *office = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
+    [Common setCurrentOfficeName:office];
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];

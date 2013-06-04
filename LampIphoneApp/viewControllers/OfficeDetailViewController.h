@@ -8,9 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OfficeDetailViewController : UIViewController
+@interface OfficeDetailViewController : UIViewController {
+}
+
+
 
 - (IBAction)lightButtonTapped:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIButton *btn1;
+@property (strong, nonatomic) IBOutlet UIButton *btn2;
+@property (strong, nonatomic) IBOutlet UIButton *btn3;
+@property (strong, nonatomic) IBOutlet UIButton *btn4;
+
 
 @property (strong, nonatomic) IBOutlet UILabel *lblDevice;
 @property (strong, nonatomic) IBOutlet UILabel *lblPower;

@@ -8,12 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DeviceConfigViewController : UIViewController
+@interface DeviceConfigViewController : UIViewController<UITextFieldDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextField *txtName;
+@property (strong, nonatomic) IBOutlet UILabel *txtName;
+
+@property (strong, nonatomic) IBOutlet UILabel *lblType;
+
+@property (strong, nonatomic) IBOutlet UITextField *txtIp;
+
+@property (strong, nonatomic) IBOutlet UITextField *txtMac;
+
+@property (strong, nonatomic) NSString *deviceName;
 
 - (IBAction)btnSaveTapped:(id)sender;
 
 - (IBAction)btnCancelTapped:(id)sender;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLightName:(NSString *)lightName;
 
 @end

@@ -59,6 +59,7 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
 }
 
 + (void)sendSocket:(const char *)payload withIP:(const char *)ip {
+    NSLog(@"operation:payload:%s and ip:%s",payload,ip);
     int sockfd;
     sockfd = socket(AF_INET,SOCK_DGRAM,0);
     if(sockfd< 0){

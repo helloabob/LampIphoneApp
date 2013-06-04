@@ -19,4 +19,11 @@
 + (void)changeLightDimming:(NSNumber *)value forLightName:(NSString *)lightName;
 
 + (void)updateLastTurnOnTimeInterval:(BOOL)onOrOff forLightName:(NSString *)lightName;
+
++ (NSArray *)getLightsInfoWithOfficeName:(NSString *)officeName;
+
++ (NSArray *)getLightsInfoWithPresetName:(NSString *)presetName;
+
++ (NSDictionary *)getLightInfoWithLightName:(NSString *)lightName;
+
 @end

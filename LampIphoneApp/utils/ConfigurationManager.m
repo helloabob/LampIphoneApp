@@ -28,7 +28,9 @@
                               [NSNumber numberWithInt:0],
                               LastOnTimeIntervalKey,
                               PowerBalanceTypeName,
-                              DeviceTypeKey, nil];
+                              DeviceTypeKey,
+                              @"192.168.11.61",
+                              DeviceIpKey, nil];
         [array addObject:dict];
     }
     [self registerObject:array forKey:DeviceUserDefaultKey];
@@ -43,15 +45,46 @@
                              OfficeDeviceNameKey, nil];
     [arrayOffice addObject:office1];
     
-    NSDictionary *office2 = [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"myOffice2",
-                             OfficeNameKey,
-                             [NSArray arrayWithObjects:nil],
-                             OfficeDeviceNameKey, nil];
-    [arrayOffice addObject:office2];
+//    NSDictionary *office2 = [NSDictionary dictionaryWithObjectsAndKeys:
+//                             @"myOffice2",
+//                             OfficeNameKey,
+//                             [NSArray arrayWithObjects:nil],
+//                             OfficeDeviceNameKey, nil];
+//    [arrayOffice addObject:office2];
     
     [self registerObject:arrayOffice forKey:OfficeUserDefaultKey];
     
+    //init preset data.
+    NSMutableArray *arrayPreset = [NSMutableArray array];
+    NSDictionary *preset1 = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"preset1",
+                             PresetNameKey,
+                             [NSArray arrayWithObjects:@"light0:50",@"light1:100",@"light2:150",@"light3:200", nil],
+                             PresetDeviceNameKey,nil];
+    [arrayPreset addObject:preset1];
+    
+    NSDictionary *preset2 = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"preset2",
+                             PresetNameKey,
+                             [NSArray arrayWithObjects:@"light0:100",@"light1:100",@"light2:150",@"light3:200", nil],
+                             PresetDeviceNameKey,nil];
+    [arrayPreset addObject:preset2];
+    
+    NSDictionary *preset3 = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"preset3",
+                             PresetNameKey,
+                             [NSArray arrayWithObjects:@"light0:0",@"light1:100",@"light2:150",@"light3:200", nil],
+                             PresetDeviceNameKey,nil];
+    [arrayPreset addObject:preset3];
+    
+    NSDictionary *preset4 = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"preset4",
+                             PresetNameKey,
+                             [NSArray arrayWithObjects:@"light0:200",@"light1:100",@"light2:150",@"light3:200", nil],
+                             PresetDeviceNameKey,nil];
+    [arrayPreset addObject:preset4];
+    
+    [self registerObject:arrayPreset forKey:PresetUserDefaultKey];
 }
 
 + (void)registerObject:(id)object forKey:(NSString *)key {
@@ -59,7 +92,7 @@
 //        [[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
 //        [[NSUserDefaults standardUserDefaults] synchronize];
 //    }
-    NSArray *array = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+//    NSArray *array = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
     NSString *filename = [path stringByAppendingPathComponent:@"db.plist"];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:filename];
@@ -127,6 +160,78 @@
     [self setObject:array forKey:DeviceUserDefaultKey];
 }
 
++ (NSArray *)getLightsInfoWithOfficeName:(NSString *)officeName {
+    NSArray *array = [self objectForKey:OfficeUserDefaultKey];
+    NSArray *arr = nil;
+    for (NSDictionary *dict in array) {
+        if ([[dict objectForKey:OfficeNameKey] isEqualToString:officeName]) {
+            arr = [[dict objectForKey:OfficeDeviceNameKey] retain];
+            break;
+        }
+    }
+    
+    NSArray *devices = [self objectForKey:DeviceUserDefaultKey];
+    NSMutableArray *lights = [NSMutableArray array];
+    for (NSString *lightName in arr) {
+        for (NSDictionary *dict in devices) {
+            if ([[dict objectForKey:DeviceNameKey] isEqualToString:lightName]) {
+                [lights addObject:dict];
+                break;
+            }
+        }
+    }
+    [arr release];
+    
+    return [NSArray arrayWithArray:lights];
+}
 
++ (NSDictionary *)getLightInfoWithLightName:(NSString *)lightName {
+    NSArray *devices = [self objectForKey:DeviceUserDefaultKey];
+    NSDictionary *light = nil;
+        for (NSDictionary *dict in devices) {
+            if ([[dict objectForKey:DeviceNameKey] isEqualToString:lightName]) {
+//                [lights addObject:dict];
+                light = dict;
+                break;
+            }
+        }
+    
+    return light;
+}
+
++ (NSArray *)getLightsInfoWithPresetName:(NSString *)presetName {
+    NSArray *array = [self objectForKey:PresetUserDefaultKey];
+    NSArray *arr = nil;
+    for (NSDictionary *dict in array) {
+        if ([[dict objectForKey:PresetNameKey] isEqualToString:presetName]) {
+            arr = [[dict objectForKey:PresetDeviceNameKey] retain];
+            break;
+        }
+    }
+    
+    NSArray *devices = [self objectForKey:DeviceUserDefaultKey];
+    NSMutableArray *lights = [NSMutableArray array];
+    for (NSString *lightNameAndDimming in arr) {
+        NSArray *arra = [lightNameAndDimming componentsSeparatedByString:@":"];
+        NSString *lightName = [arra objectAtIndex:0];
+        int dimming = [[arra objectAtIndex:1] intValue];
+        for (NSDictionary *dict in devices) {
+            if ([[dict objectForKey:DeviceNameKey] isEqualToString:lightName]) {
+                NSDictionary *newDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         lightName,
+                                         DeviceNameKey,
+                                         [dict objectForKey:DeviceIpKey],
+                                         DeviceIpKey,
+                                         [NSNumber numberWithInt:dimming],
+                                         DimmingLevelKey, nil];
+                [lights addObject:newDict];
+                break;
+            }
+        }
+    }
+    [arr release];
+    
+    return [NSArray arrayWithArray:lights];
+}
 
 @end

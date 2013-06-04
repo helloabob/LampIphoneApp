@@ -11,12 +11,15 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "Common.h"
 #endif
 
-#define ChangeDimmingValue(value,ip) ([CoAPSocketUtils sendSocket:[[NSString stringWithFormat:@"{\"b\":%d}",value] UTF8String] withIP:ip])
-#define TurnOnOff(value,ip) ([CoAPSocketUtils sendSocket:[[NSString stringWithFormat:@"{\"o\":%@}",value] UTF8String] withIP:ip])
 
-#define ip_addr "192.168.11.54"
+
+#define ChangeDimmingValue(value,ip) ([CoAPSocketUtils sendSocket:[[NSString stringWithFormat:@"{\"b\":%d}",value] UTF8String] withIP:[ip UTF8String]])
+#define TurnOnOff(value,ip) ([CoAPSocketUtils sendSocket:[[NSString stringWithFormat:@"{\"o\":%@}",value] UTF8String] withIP:[ip UTF8String]])
+
+#define ip_addr @"192.168.11.54"
 
 #define app_default_background_color [UIColor colorWithRed:211.0/255.0 green:215.0/255.0 blue:212.0/255.0 alpha:1.0f]
 
@@ -30,7 +33,8 @@
 #define DimmingLevelKey         @"dimmingLevelKey"
 #define LastOnTimeIntervalKey   @"lastOnTimeIntervalKey"
 #define DeviceTypeKey           @"deviceTypeKey"
-#define DeviceIp                @"deviceIp"
+#define DeviceIpKey             @"deviceIpKey"
+#define DeviceMacKey            @"deviceMacKey"
 
 #define DeviceUserDefaultKey    @"deviceUserDefaultKey"
 /**********end*************/
@@ -40,4 +44,11 @@
 #define OfficeDeviceNameKey     @"officeDeviceNameKey"
 
 #define OfficeUserDefaultKey    @"officeUserDefaultKey"
+/**********end*************/
+
+/**********preset database keys*************/
+#define PresetNameKey           @"presetNameKey"
+#define PresetDeviceNameKey     @"presetDeviceNameKey"
+
+#define PresetUserDefaultKey    @"presetUserDefaultKey"
 /**********end*************/

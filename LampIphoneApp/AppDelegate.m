@@ -14,6 +14,10 @@
 
 @implementation AppDelegate
 
+@synthesize officeName = _officeName;
+@synthesize window = _window;
+@synthesize viewController = _viewController;
+
 - (void)dealloc
 {
     [_window release];
@@ -23,19 +27,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //register user default data.
+    [ConfigurationManager registerDefaultData];
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[IndexViewController alloc] initWithNibName:@"IndexViewController" bundle:nil] autorelease];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.viewController];
-    nav.navigationBar.tintColor = [UIColor colorWithRed:91.0/255.0 green:199.0/255.0 blue:255.0/255.0 alpha:1];
+//    nav.navigationBar.tintColor = [UIColor colorWithRed:91.0/255.0 green:199.0/255.0 blue:255.0/255.0 alpha:1];
+    nav.navigationBar.tintColor = [UIColor colorWithRed:11.0/255.0 green:94.0/255.0 blue:215.0/255.0 alpha:1];
+
 //    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor blueColor] forKey:UITextAttributeTextColor];
 //    nav.navigationBar.titleTextAttributes = dict;
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
-    //register user default data.
-    [ConfigurationManager registerDefaultData];
+    
     
     return YES;
 }

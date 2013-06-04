@@ -12,9 +12,14 @@
 
 #import "CoAPSocketUtils.h"
 
+#import "AppDelegate.h"
+
+#import "DeviceConfigViewController.h"
+
 @interface OfficeDetailViewController () {
     int lightIndex;
     int lastDimmingValue;
+    NSString *cur_ip;
 }
 
 @end
@@ -32,6 +37,10 @@ static BOOL isOn;
     self.lblDevice = nil;
     self.lightArray = nil;
     self.sliDimming = nil;
+    self.btn1 = nil;
+    self.btn2 = nil;
+    self.btn3 = nil;
+    self.btn4 = nil;
     NSLog(@"detail_dealloc");
     [super dealloc];
 }
@@ -46,17 +55,20 @@ static BOOL isOn;
 }
 
 - (void)getLightInfo {
-    NSArray *array = [[[ConfigurationManager objectForKey:OfficeUserDefaultKey] objectAtIndex:self.roomIndex] objectForKey:OfficeDeviceNameKey];
-    NSArray *devices = [ConfigurationManager objectForKey:DeviceUserDefaultKey];
-    self.lightArray = [NSMutableArray array];
-    for (NSString *lightName in array) {
-        for (NSDictionary *dict in devices) {
-            if ([lightName isEqualToString:[dict objectForKey:DeviceNameKey]]) {
-                [self.lightArray addObject:dict];
-                break;
-            }
-        }
-    }
+    self.title = @"Philips";
+    self.lightArray = [NSMutableArray arrayWithArray:[ConfigurationManager getLightsInfoWithOfficeName:[Common currentOfficeName]]];
+    
+//    NSArray *array = [[[ConfigurationManager objectForKey:OfficeUserDefaultKey] objectAtIndex:self.roomIndex] objectForKey:OfficeDeviceNameKey];
+//    NSArray *devices = [ConfigurationManager objectForKey:DeviceUserDefaultKey];
+//    self.lightArray = [NSMutableArray array];
+//    for (NSString *lightName in array) {
+//        for (NSDictionary *dict in devices) {
+//            if ([lightName isEqualToString:[dict objectForKey:DeviceNameKey]]) {
+//                [self.lightArray addObject:dict];
+//                break;
+//            }
+//        }
+//    }
 }
 
 - (void)viewDidLoad
@@ -66,14 +78,46 @@ static BOOL isOn;
     
     self.view.backgroundColor = app_default_background_color;
     
+    [self.btn1 setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
+    [self.btn2 setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
+    [self.btn3 setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
+    [self.btn4 setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
+    
+    UIButton *btn = [UIButton buttonWithType:110];
+    [btn setTitle:@"Setting" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(20, 353, 100, 40);
+    [btn addTarget:self action:@selector(gotoSetting) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
     [self getLightInfo];
     
     lightIndex = -1;
+    cur_ip = @"";
     
 //    [self.sliDimming addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventValueChanged];
     [self.sliDimming addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
     self.sliDimming.enabled = NO;
     lastDimmingValue = 110;
+}
+
+- (void)gotoSetting {
+    
+    if ([self.lblDevice.text isEqualToString:@""] || [self.lblDevice.text isEqualToString: @"Null"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Please select a light ." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    DeviceConfigViewController *detailViewController = [[DeviceConfigViewController alloc] initWithNibName:@"DeviceConfigViewController" bundle:nil withLightName:self.lblDevice.text];
+    [self presentViewController:detailViewController animated:YES completion:nil];
+//    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
+//    detailViewController.roomIndex = indexPath.row;
+    // ...
+    // Pass the selected object to the new view controller.
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+    
+    
 }
 
 - (void)dimmingChanged:(id)sender {
@@ -118,17 +162,21 @@ static BOOL isOn;
 - (void)updateViewText {
     self.lblDimming.text = [NSString stringWithFormat:@"%d",lastDimmingValue];
     self.lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(lastDimmingValue)];
-    
 }
 
 - (IBAction)lightButtonTapped:(id)sender {
-    
     
     self.sliDimming.enabled = YES;
     UIButton *btn = (UIButton *)sender;
     if (self.lightArray.count < btn.tag) {
         return;
     }
+    
+    [self.btn1 setSelected:NO];
+    [self.btn2 setSelected:NO];
+    [self.btn3 setSelected:NO];
+    [self.btn4 setSelected:NO];
+    [btn setSelected:YES];
     
     if (lightIndex != -1 && lightIndex != btn.tag - 1) {
         [ConfigurationManager changeLightDimming:[NSNumber numberWithInt:lastDimmingValue] forLightName:self.lblDevice.text];
@@ -142,6 +190,8 @@ static BOOL isOn;
     self.lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(dimming)];
     self.lblDimming.text = [NSString stringWithFormat:@"%d",(int)dimming];
     self.sliDimming.value = dimming;
+    lastDimmingValue = dimming;
+    cur_ip = [[self.lightArray objectAtIndex:lightIndex] objectForKey:DeviceIpKey];
 }
 
 @end
