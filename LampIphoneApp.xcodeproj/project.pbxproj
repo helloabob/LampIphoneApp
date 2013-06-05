@@ -65,6 +65,9 @@
 		2DD43508175ED41100950BA3 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43507175ED41100950BA3 /* MBProgressHUD.m */; };
 		2DD4350A175ED77A00950BA3 /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD43509175ED77A00950BA3 /* wifi.png */; };
 		2DD4350D175F192300950BA3 /* PairMacIPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4350C175F192300950BA3 /* PairMacIPOperation.m */; };
+		2DD43510175F98FC00950BA3 /* cbx00.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD4350E175F98FC00950BA3 /* cbx00.png */; };
+		2DD43511175F98FC00950BA3 /* cbx01.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD4350F175F98FC00950BA3 /* cbx01.png */; };
+		2DD43513175F9CC200950BA3 /* btn_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD43512175F9CC200950BA3 /* btn_right.png */; };
 		2DE27F5A1756E5AD00AF109E /* highlight_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE27F591756E5AD00AF109E /* highlight_back.png */; };
 		2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */; };
 		2DE27F611757233D00AF109E /* DeviceConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */; };
@@ -184,6 +187,9 @@
 		2DD43509175ED77A00950BA3 /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
 		2DD4350B175F192300950BA3 /* PairMacIPOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PairMacIPOperation.h; sourceTree = "<group>"; };
 		2DD4350C175F192300950BA3 /* PairMacIPOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PairMacIPOperation.m; sourceTree = "<group>"; };
+		2DD4350E175F98FC00950BA3 /* cbx00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cbx00.png; sourceTree = "<group>"; };
+		2DD4350F175F98FC00950BA3 /* cbx01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cbx01.png; sourceTree = "<group>"; };
+		2DD43512175F9CC200950BA3 /* btn_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_right.png; sourceTree = "<group>"; };
 		2DE27F591756E5AD00AF109E /* highlight_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight_back.png; sourceTree = "<group>"; };
 		2DE27F5B1756E7ED00AF109E /* ConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationManager.h; sourceTree = "<group>"; };
 		2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationManager.m; sourceTree = "<group>"; };
@@ -321,10 +327,13 @@
 		2DCB75CD17531BC6000718F2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DD4350E175F98FC00950BA3 /* cbx00.png */,
+				2DD4350F175F98FC00950BA3 /* cbx01.png */,
 				2DD43509175ED77A00950BA3 /* wifi.png */,
 				2DD43501175E413300950BA3 /* cbx0.png */,
 				2DD43502175E413300950BA3 /* cbx1.png */,
 				2DC1A01E175C3F2A000FBB29 /* light_icon_selected.png */,
+				2DD43512175F9CC200950BA3 /* btn_right.png */,
 				2DFB50E6175893A400F02D49 /* scan_icon.png */,
 				2DE27F591756E5AD00AF109E /* highlight_back.png */,
 				2DC575751755DD96009621EB /* light_icon.png */,
@@ -562,6 +571,9 @@
 				2DD43503175E413300950BA3 /* cbx0.png in Resources */,
 				2DD43504175E413300950BA3 /* cbx1.png in Resources */,
 				2DD4350A175ED77A00950BA3 /* wifi.png in Resources */,
+				2DD43510175F98FC00950BA3 /* cbx00.png in Resources */,
+				2DD43511175F98FC00950BA3 /* cbx01.png in Resources */,
+				2DD43513175F9CC200950BA3 /* btn_right.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

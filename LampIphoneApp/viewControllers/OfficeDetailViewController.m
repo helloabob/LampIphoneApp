@@ -269,6 +269,12 @@ static BOOL isOn;
         [ConfigurationManager changeLightDimming:[NSNumber numberWithInt:lastDimmingValue] forLightName:self.lblDevice.text];
     }
     
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    hud.labelText = @"Loading...";
+    hud.dimBackground = YES;
+    [self.navigationController.view addSubview:hud];
+    [hud show:YES];
+    
     lightIndex = btn.tag - 1;
     [self getLightInfo];
     
@@ -284,6 +290,10 @@ static BOOL isOn;
     NSLog(@"%@",info);
     self.lblRunningTime.text = [NSString stringWithFormat:@"%dh %dm",[[info objectForKey:@"h"] intValue],[[info objectForKey:@"m"] intValue]];
     
+    [hud hide:YES];
+    [hud removeFromSuperview];
+    [hud release];
+    hud = nil;
 }
 
 - (NSDictionary *)getHardwareInfo:(NSString *)ip_address {

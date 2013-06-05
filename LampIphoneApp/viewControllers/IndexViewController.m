@@ -28,6 +28,8 @@
 
 @synthesize arrayMenu = _arrayMenu;
 
+@synthesize txtRoom = _txtRoom;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,6 +40,7 @@
 }
 
 - (void)dealloc {
+    self.txtRoom = nil;
     self.tblSystem.delegate = nil;
     self.tblSystem.dataSource = nil;
     self.tblSystem = nil;
@@ -66,8 +69,34 @@
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
+    self.txtRoom.delegate = self;
+    self.txtRoom.returnKeyType = UIReturnKeyDone;
 //    self.tblSystem.backgroundColor = app_default_background_color;
     
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)btnEnterTapped:(id)sender {
+    BOOL canFind = NO;
+    for (NSDictionary *dict in self.arrayMenu) {
+        if ([[dict objectForKey:OfficeNameKey] isEqualToString:self.txtRoom.text]) {
+            canFind = YES;
+            break;
+        }
+    }
+    if (canFind) {
+        [Common setCurrentOfficeName:self.txtRoom.text];
+        RootViewController *detailViewController = [[RootViewController alloc] init];
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [detailViewController release];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[NSString stringWithFormat:@"Room %@ is not exist!", self.txtRoom.text] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 - (void)gotoScan {

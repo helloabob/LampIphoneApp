@@ -71,9 +71,9 @@
     [self.navigationItem hidesBackButton];
     
     btnEnabled = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnEnabled.frame = CGRectMake(20, 376, 30, 30);
-    [btnEnabled setImage:[UIImage imageNamed:@"cbx0"] forState:UIControlStateNormal];
-    [btnEnabled setImage:[UIImage imageNamed:@"cbx1"] forState:UIControlStateSelected];
+    btnEnabled.frame = CGRectMake(20, 381, 20, 20);
+    [btnEnabled setImage:[UIImage imageNamed:@"cbx00"] forState:UIControlStateNormal];
+    [btnEnabled setImage:[UIImage imageNamed:@"cbx01"] forState:UIControlStateSelected];
     [btnEnabled addTarget:self action:@selector(btnEnabledTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnEnabled];
     self.sli.enabled = NO;
@@ -203,7 +203,7 @@
             break;
         case 4: {
             [self updateControllerState:NO];
-            NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
+            NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset2"];
             for (NSDictionary *dict in array) {
                 ChangeDimmingValue([[dict objectForKey:DimmingLevelKey] intValue], [dict objectForKey:DeviceIpKey]);
             }
@@ -213,7 +213,7 @@
             break;
         case 5: {
             [self updateControllerState:NO];
-            NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
+            NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset3"];
             for (NSDictionary *dict in array) {
                 ChangeDimmingValue([[dict objectForKey:DimmingLevelKey] intValue], [dict objectForKey:DeviceIpKey]);
             }
@@ -223,7 +223,7 @@
             break;
         case 6: {
             [self updateControllerState:NO];
-            NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
+            NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset4"];
             for (NSDictionary *dict in array) {
                 ChangeDimmingValue([[dict objectForKey:DimmingLevelKey] intValue], [dict objectForKey:DeviceIpKey]);
             }
