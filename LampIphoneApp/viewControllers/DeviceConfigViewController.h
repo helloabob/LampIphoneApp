@@ -26,4 +26,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLightName:(NSString *)lightName;
 
+- (IBAction)btnCheckTapped:(id)sender;
+
 @end

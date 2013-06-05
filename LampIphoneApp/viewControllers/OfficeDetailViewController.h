@@ -30,6 +30,8 @@
 
 @property (strong, nonatomic) NSMutableArray *lightArray;
 
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
+
 @property (assign, nonatomic) int roomIndex;
 
 

@@ -36,7 +36,7 @@
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.viewController];
 //    nav.navigationBar.tintColor = [UIColor colorWithRed:91.0/255.0 green:199.0/255.0 blue:255.0/255.0 alpha:1];
-    nav.navigationBar.tintColor = [UIColor colorWithRed:11.0/255.0 green:94.0/255.0 blue:215.0/255.0 alpha:1];
+    nav.navigationBar.tintColor = app_philips_color;
 
 //    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor blueColor] forKey:UITextAttributeTextColor];
 //    nav.navigationBar.titleTextAttributes = dict;

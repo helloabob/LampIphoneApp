@@ -15,6 +15,8 @@ const int server_port = 5683;
 
 @implementation CoAPSocketUtils
 
+//void mytimeout();
+
 static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType type, CFDataRef address, const void *data, void *info) {
     if (data != NULL) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"连接失败" delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil];
@@ -58,8 +60,153 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
     CFRelease(source);
 }
 
++ (NSString *)statusSocketWithIp:(const char *)ip {
+    //aE'{"h":0,"m":25,"o":true,"b":128}
+    int sockfd;
+    sockfd = socket(AF_INET,SOCK_DGRAM,0);
+    if(sockfd< 0){
+        NSLog(@"error in creating socket:%d.",sockfd);
+        return nil;
+    }
+    struct sockaddr_in addr;
+    char buffer[256];
+    memset(buffer, 0, 256);
+    buffer[0] = 0x43;
+    buffer[1] = 0x01;
+    buffer[2] = 0x27;
+    buffer[3] = 0x10;
+    buffer[4] = 0x91;
+    buffer[5] = 0x6C;
+    buffer[6] = 0x01;
+    buffer[7] = 0x30;
+    
+    buffer[8] = 0x01;
+    buffer[9] = 0x73;
+    
+    //    char *point = (char *)(buffer+8);
+    //    strcpy(point, payload);
+    
+    bzero(&addr, sizeof(addr));
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(server_port);
+    addr.sin_addr.s_addr = inet_addr(ip);
+    int res = sendto(sockfd,buffer,strlen(buffer),0,(struct sockaddr *)&addr,sizeof(addr));
+    if (res == -1) {
+        NSLog(@"error in sendto");
+    }
+    
+    memset(buffer, 0, 255);
+    //    printf("buffer%s",buffer);
+    
+    socklen_t addr_len = sizeof(addr);
+    
+//    res = recvfrom(sockfd, buffer, 255, 0, (struct sockaddr *)&addr, &addr_len);
+    
+    struct timeval tv;
+    fd_set readfds;
+    FD_ZERO(&readfds);
+    FD_SET(sockfd, &readfds);
+    tv.tv_sec = 1;
+    tv.tv_usec = 1;
+    select(sockfd+1, &readfds, NULL, NULL, &tv);
+    if (FD_ISSET(sockfd, &readfds)) {
+        if ((res = recvfrom(sockfd, buffer, 255, 0, (struct sockaddr *)&addr, &addr_len)) >= 0) {
+        }
+    }
+    printf("buffer:%s",buffer);
+    
+    //    free(buffer);
+    //    point = NULL;
+    close(sockfd);
+    return [NSString stringWithFormat:@"%s",buffer];
+}
+
+void mytimeout() {
+    NSLog(@"aaaaa");
+}
+
++ (NSString *)checkSocketWithIp:(const char *)ip {
+    int sockfd;
+    sockfd = socket(AF_INET,SOCK_DGRAM,0);
+    if(sockfd< 0){
+        NSLog(@"error in creating socket:%d.",sockfd);
+        return nil;
+    }
+    struct sockaddr_in addr;
+    char buffer[256];
+    memset(buffer, 0, 256);
+    buffer[0] = 0x42;
+    buffer[1] = 0x01;
+    buffer[2] = 0x27;
+    buffer[3] = 0x10;
+    buffer[4] = 0x9B;
+    buffer[5] = 0x2E;
+    buffer[6] = 0x77;
+    buffer[7] = 0x65;
+    
+    buffer[8] = 0x6C;
+    buffer[9] = 0x6C;
+    buffer[10] = 0x2D;
+    buffer[11] = 0x6B;
+    buffer[12] = 0x6E;
+    buffer[13] = 0x6F;
+    buffer[14] = 0x77;
+    
+    buffer[15] = 0x6E;
+    buffer[16] = 0x04;
+    buffer[17] = 0x63;
+    buffer[18] = 0x6F;
+    buffer[19] = 0x72;
+    buffer[20] = 0x65;
+    
+//    char *point = (char *)(buffer+8);
+//    strcpy(point, payload);
+    
+    bzero(&addr, sizeof(addr));
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(server_port);
+    addr.sin_addr.s_addr = inet_addr(ip);
+    int res = sendto(sockfd,buffer,strlen(buffer),0,(struct sockaddr *)&addr,sizeof(addr));
+    if (res == -1) {
+        NSLog(@"error in sendto");
+    }
+    memset(buffer, 0, 255);
+//    printf("buffer%s",buffer);
+    NSLog(@"has sent message.");
+    socklen_t addr_len = sizeof(addr);
+//    fcntl(sockfd ,F_SETFL, O_NONBLOCK);
+//    int time_out = 2000;
+//    setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *)&time_out, sizeof(time_out));
+//    signal(SIGALRM, mytimeout);
+    struct timeval tv;
+    fd_set readfds;
+    FD_ZERO(&readfds);
+    FD_SET(sockfd, &readfds);
+    tv.tv_sec = 1;
+    tv.tv_usec = 1;
+    select(sockfd+1, &readfds, NULL, NULL, &tv);
+    if (FD_ISSET(sockfd, &readfds)) {
+        if ((res = recvfrom(sockfd, buffer, 255, 0, (struct sockaddr *)&addr, &addr_len)) >= 0) {
+        } else {
+        }
+    }
+//    res = recvfrom(sockfd, buffer, 255, 0, (struct sockaddr *)&addr, &addr_len);
+    printf("buffer:%s",buffer);
+    
+    //    free(buffer);
+//    point = NULL;
+    close(sockfd);
+    return [NSString stringWithFormat:@"%s",buffer];
+
+}
+
+
+
 + (void)sendSocket:(const char *)payload withIP:(const char *)ip {
     NSLog(@"operation:payload:%s and ip:%s",payload,ip);
+    if (ip == NULL || strlen(ip) < 7 || payload == NULL) {
+        return;
+    }
     int sockfd;
     sockfd = socket(AF_INET,SOCK_DGRAM,0);
     if(sockfd< 0){

@@ -16,10 +16,17 @@
 
 #import "DeviceConfigViewController.h"
 
+#import "MBProgressHUD.h"
+
+#import "CoAPProcessOperation.h"
+
+#import "JSON.h"
+
 @interface OfficeDetailViewController () {
     int lightIndex;
     int lastDimmingValue;
     NSString *cur_ip;
+//    NSOperationQueue *queue;
 }
 
 @end
@@ -31,6 +38,8 @@ static BOOL isOn;
 @synthesize lblDevice = _lblDevice;
 @synthesize lblPower = _lblPower;
 @synthesize roomIndex = _roomIndex;
+
+@synthesize toolbar = _toolbar;
 
 - (void)dealloc {
     self.lblPower = nil;
@@ -55,7 +64,7 @@ static BOOL isOn;
 }
 
 - (void)getLightInfo {
-    self.title = @"Philips";
+    self.title = @"PHILIPS";
     self.lightArray = [NSMutableArray arrayWithArray:[ConfigurationManager getLightsInfoWithOfficeName:[Common currentOfficeName]]];
     
 //    NSArray *array = [[[ConfigurationManager objectForKey:OfficeUserDefaultKey] objectAtIndex:self.roomIndex] objectForKey:OfficeDeviceNameKey];
@@ -83,11 +92,36 @@ static BOOL isOn;
     [self.btn3 setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
     [self.btn4 setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
     
-    UIButton *btn = [UIButton buttonWithType:110];
-    [btn setTitle:@"Setting" forState:UIControlStateNormal];
-    btn.frame = CGRectMake(20, 353, 100, 40);
-    [btn addTarget:self action:@selector(gotoSetting) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    self.toolbar.tintColor = app_philips_color;
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"settings" style:UIBarButtonItemStyleDone target:self action:@selector(gotoSetting)];
+    
+//    UIButton *btnWifi = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [btnWifi setImage:[UIImage imageNamed:@"wifi"] forState:UIControlStateNormal];
+//    [btnWifi setFrame:CGRectMake(0, 0, 30, 30)];
+//    [btnWifi addTarget:self action:@selector(gotoChecking) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithCustomView:btnWifi];
+//    item1.width = 100.0;
+    
+    UIButton *btnSetting = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnSetting setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
+    [btnSetting setFrame:CGRectMake(0, 0, 30, 30)];
+    [btnSetting addTarget:self action:@selector(gotoSetting) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btnSetting];
+    [self.toolbar setItems:[NSArray arrayWithObjects:item, nil]];
+    
+    UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnRight setImage:[UIImage imageNamed:@"wifi"] forState:UIControlStateNormal];
+    btnRight.frame = CGRectMake(0, 0, 30, 30);
+    [btnRight addTarget:self action:@selector(gotoChecking) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    
+//    UIButton *btn = [UIButton buttonWithType:110];
+//    [btn setTitle:@"Setting" forState:UIControlStateNormal];
+//    btn.frame = CGRectMake(20, 353, 100, 40);
+//    [btn addTarget:self action:@selector(gotoSetting) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:btn];
+    
     
     [self getLightInfo];
     
@@ -98,6 +132,58 @@ static BOOL isOn;
     [self.sliDimming addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
     self.sliDimming.enabled = NO;
     lastDimmingValue = 110;
+}
+
+- (void)gotoChecking {
+//    UIView *vv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - 44)];
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//    [vv release];
+//    vv = nil;
+//    [hud setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - 44)];
+    NSLog(@"view:%@",self.navigationController.view);
+//    [self.view addSubview:hud];
+    [self.navigationController.view addSubview:hud];
+//    [[[UIApplication sharedApplication] keyWindow] addSubview:hud];
+//    hud.center = CGPointMake(hud.center.x, hud.center.y - 50);
+    [hud release];
+//    [[[UIApplication sharedApplication] keyWindow] addSubview:hud];
+    hud.dimBackground = YES;
+    hud.labelText = @"Pairing...";
+    [hud show:YES];
+    
+//    sleep(3);
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    NSLog(@"operation_count:%d",queue.operationCount);
+    [queue setMaxConcurrentOperationCount:65];
+    for (int i = 30; i < 65; i ++) {
+        CoAPProcessOperation *op = [[CoAPProcessOperation alloc] init];
+        op.theIP = [NSString stringWithFormat:@"192.168.11.%d",i];
+        [queue addOperation:op];
+        [op release];
+    }
+//    [CoAPSocketUtils checkSocketWithIp:"192.168.11.61"];
+    NSArray *array = [NSArray arrayWithObjects:hud, queue, nil];
+    [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(checkComplete:) userInfo:array repeats:NO];
+    
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    
+}
+
+- (void)checkComplete:(NSTimer *)timer {
+    NSArray *array = [timer userInfo];
+    
+    NSOperationQueue *quee = [array objectAtIndex:1];
+    [quee cancelAllOperations];
+    [quee release];
+    quee = nil;    
+    
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    
+    MBProgressHUD *hud = [array objectAtIndex:0];
+    [hud hide:YES];
+    [hud release];
+    hud = nil;
 }
 
 - (void)gotoSetting {
@@ -126,16 +212,16 @@ static BOOL isOn;
     int value = self.sliDimming.value;
     lastDimmingValue = value;
     if (value == 0) {
-        TurnOnOff(@"false", ip_addr);
+        TurnOnOff(@"false", cur_ip);
 //        [ConfigurationManager updateLastTurnOnTimeInterval:NO forLightName:self.title];
         isOn = NO;
     } else {
         if (!isOn) {
-            TurnOnOff(@"true", ip_addr);
+            TurnOnOff(@"true", cur_ip);
 //            [ConfigurationManager updateLastTurnOnTimeInterval:YES forLightName:self.title];
             isOn = YES;
         }
-        ChangeDimmingValue(value, ip_addr);
+        ChangeDimmingValue(value, cur_ip);
 //        [ConfigurationManager changeLightDimming:[NSNumber numberWithInt:value] forLightName:self.title];
     }
     [self updateViewText];
@@ -160,7 +246,8 @@ static BOOL isOn;
 }
 
 - (void)updateViewText {
-    self.lblDimming.text = [NSString stringWithFormat:@"%d",lastDimmingValue];
+    self.lblDimming.text = [NSString stringWithFormat:@"%d%%",(int)(lastDimmingValue/MaxDimmingLevel*100)];
+//    self.lblDimming.text = [NSString stringWithFormat:@"%d",lastDimmingValue];
     self.lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(lastDimmingValue)];
 }
 
@@ -188,10 +275,31 @@ static BOOL isOn;
     self.lblDevice.text = [[self.lightArray objectAtIndex:lightIndex] objectForKey:DeviceNameKey];
     CGFloat dimming = [[[self.lightArray objectAtIndex:lightIndex] objectForKey:DimmingLevelKey] doubleValue];
     self.lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(dimming)];
-    self.lblDimming.text = [NSString stringWithFormat:@"%d",(int)dimming];
+//    self.lblDimming.text = [NSString stringWithFormat:@"%d",(int)dimming];
+    self.lblDimming.text = [NSString stringWithFormat:@"%d%%",(int)(dimming/MaxDimmingLevel*100)];
     self.sliDimming.value = dimming;
     lastDimmingValue = dimming;
     cur_ip = [[self.lightArray objectAtIndex:lightIndex] objectForKey:DeviceIpKey];
+    NSDictionary *info = [self getHardwareInfo:cur_ip];
+    NSLog(@"%@",info);
+    self.lblRunningTime.text = [NSString stringWithFormat:@"%dh %dm",[[info objectForKey:@"h"] intValue],[[info objectForKey:@"m"] intValue]];
+    
+}
+
+- (NSDictionary *)getHardwareInfo:(NSString *)ip_address {
+    NSString *result = [CoAPSocketUtils statusSocketWithIp:[ip_address UTF8String]];
+    //    NSLog(@"%@",result);
+    if (result && result.length > 20) {
+        NSRange range = [result rangeOfString:@"{\"h\":"];
+        //        NSLog(@"location:%d,len:%d",range.location,range.length);
+        if (range.length != 5) {
+            return nil;
+        }
+        NSString *info = [result substringFromIndex:(range.location)];
+        NSLog(@"ip:%@ and reslut:%@", ip_address, info);
+        return [info JSONValue];
+    }
+    return nil;
 }
 
 @end

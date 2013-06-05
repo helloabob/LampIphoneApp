@@ -53,6 +53,18 @@
 		2DD434E3175C895D00950BA3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD434E2175C895D00950BA3 /* CoreVideo.framework */; };
 		2DD434E5175C897D00950BA3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD434E4175C897D00950BA3 /* AVFoundation.framework */; };
 		2DD434E7175C8A7B00950BA3 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD434E6175C8A7B00950BA3 /* libiconv.dylib */; };
+		2DD434F8175DDF6000950BA3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD434ED175DDF6000950BA3 /* NSObject+SBJSON.m */; };
+		2DD434F9175DDF6000950BA3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD434EF175DDF6000950BA3 /* NSString+SBJSON.m */; };
+		2DD434FA175DDF6000950BA3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD434F1175DDF6000950BA3 /* SBJSON.m */; };
+		2DD434FB175DDF6000950BA3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD434F3175DDF6000950BA3 /* SBJsonBase.m */; };
+		2DD434FC175DDF6000950BA3 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD434F5175DDF6000950BA3 /* SBJsonParser.m */; };
+		2DD434FD175DDF6000950BA3 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD434F7175DDF6000950BA3 /* SBJsonWriter.m */; };
+		2DD43500175E3F7D00950BA3 /* CoAPProcessOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD434FF175E3F7D00950BA3 /* CoAPProcessOperation.m */; };
+		2DD43503175E413300950BA3 /* cbx0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD43501175E413300950BA3 /* cbx0.png */; };
+		2DD43504175E413300950BA3 /* cbx1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD43502175E413300950BA3 /* cbx1.png */; };
+		2DD43508175ED41100950BA3 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43507175ED41100950BA3 /* MBProgressHUD.m */; };
+		2DD4350A175ED77A00950BA3 /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD43509175ED77A00950BA3 /* wifi.png */; };
+		2DD4350D175F192300950BA3 /* PairMacIPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4350C175F192300950BA3 /* PairMacIPOperation.m */; };
 		2DE27F5A1756E5AD00AF109E /* highlight_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE27F591756E5AD00AF109E /* highlight_back.png */; };
 		2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */; };
 		2DE27F611757233D00AF109E /* DeviceConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */; };
@@ -150,6 +162,28 @@
 		2DD434E2175C895D00950BA3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2DD434E4175C897D00950BA3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2DD434E6175C8A7B00950BA3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		2DD434EB175DDF6000950BA3 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		2DD434EC175DDF6000950BA3 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		2DD434ED175DDF6000950BA3 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		2DD434EE175DDF6000950BA3 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		2DD434EF175DDF6000950BA3 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		2DD434F0175DDF6000950BA3 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		2DD434F1175DDF6000950BA3 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		2DD434F2175DDF6000950BA3 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		2DD434F3175DDF6000950BA3 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		2DD434F4175DDF6000950BA3 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		2DD434F5175DDF6000950BA3 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		2DD434F6175DDF6000950BA3 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		2DD434F7175DDF6000950BA3 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		2DD434FE175E3F7D00950BA3 /* CoAPProcessOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoAPProcessOperation.h; sourceTree = "<group>"; };
+		2DD434FF175E3F7D00950BA3 /* CoAPProcessOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoAPProcessOperation.m; sourceTree = "<group>"; };
+		2DD43501175E413300950BA3 /* cbx0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cbx0.png; sourceTree = "<group>"; };
+		2DD43502175E413300950BA3 /* cbx1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cbx1.png; sourceTree = "<group>"; };
+		2DD43506175ED41100950BA3 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2DD43507175ED41100950BA3 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2DD43509175ED77A00950BA3 /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
+		2DD4350B175F192300950BA3 /* PairMacIPOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PairMacIPOperation.h; sourceTree = "<group>"; };
+		2DD4350C175F192300950BA3 /* PairMacIPOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PairMacIPOperation.m; sourceTree = "<group>"; };
 		2DE27F591756E5AD00AF109E /* highlight_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight_back.png; sourceTree = "<group>"; };
 		2DE27F5B1756E7ED00AF109E /* ConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationManager.h; sourceTree = "<group>"; };
 		2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationManager.m; sourceTree = "<group>"; };
@@ -287,6 +321,9 @@
 		2DCB75CD17531BC6000718F2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DD43509175ED77A00950BA3 /* wifi.png */,
+				2DD43501175E413300950BA3 /* cbx0.png */,
+				2DD43502175E413300950BA3 /* cbx1.png */,
 				2DC1A01E175C3F2A000FBB29 /* light_icon_selected.png */,
 				2DFB50E6175893A400F02D49 /* scan_icon.png */,
 				2DE27F591756E5AD00AF109E /* highlight_back.png */,
@@ -315,6 +352,10 @@
 				2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */,
 				2DC1A020175C5E81000FBB29 /* Common.h */,
 				2DC1A021175C5E81000FBB29 /* Common.m */,
+				2DD434FE175E3F7D00950BA3 /* CoAPProcessOperation.h */,
+				2DD434FF175E3F7D00950BA3 /* CoAPProcessOperation.m */,
+				2DD4350B175F192300950BA3 /* PairMacIPOperation.h */,
+				2DD4350C175F192300950BA3 /* PairMacIPOperation.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -322,6 +363,8 @@
 		2DCB75F617544964000718F2 /* vend */ = {
 			isa = PBXGroup;
 			children = (
+				2DD43505175ED41100950BA3 /* MBProgressHUD */,
+				2DD434EA175DDF6000950BA3 /* JSON */,
 				2DD434BB175C875800950BA3 /* ZBarSDK */,
 				2DCB75F71754497F000718F2 /* AsyncUdpSocket */,
 			);
@@ -401,6 +444,35 @@
 				2DD434D8175C875800950BA3 /* zbar-samples.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2DD434EA175DDF6000950BA3 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				2DD434EB175DDF6000950BA3 /* JSON.h */,
+				2DD434EC175DDF6000950BA3 /* NSObject+SBJSON.h */,
+				2DD434ED175DDF6000950BA3 /* NSObject+SBJSON.m */,
+				2DD434EE175DDF6000950BA3 /* NSString+SBJSON.h */,
+				2DD434EF175DDF6000950BA3 /* NSString+SBJSON.m */,
+				2DD434F0175DDF6000950BA3 /* SBJSON.h */,
+				2DD434F1175DDF6000950BA3 /* SBJSON.m */,
+				2DD434F2175DDF6000950BA3 /* SBJsonBase.h */,
+				2DD434F3175DDF6000950BA3 /* SBJsonBase.m */,
+				2DD434F4175DDF6000950BA3 /* SBJsonParser.h */,
+				2DD434F5175DDF6000950BA3 /* SBJsonParser.m */,
+				2DD434F6175DDF6000950BA3 /* SBJsonWriter.h */,
+				2DD434F7175DDF6000950BA3 /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		2DD43505175ED41100950BA3 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2DD43506175ED41100950BA3 /* MBProgressHUD.h */,
+				2DD43507175ED41100950BA3 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,6 +559,9 @@
 				2DD434DB175C875800950BA3 /* zbar-help.html in Resources */,
 				2DD434DC175C875800950BA3 /* zbar-helpicons.png in Resources */,
 				2DD434DD175C875800950BA3 /* zbar-samples.png in Resources */,
+				2DD43503175E413300950BA3 /* cbx0.png in Resources */,
+				2DD43504175E413300950BA3 /* cbx1.png in Resources */,
+				2DD4350A175ED77A00950BA3 /* wifi.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +589,15 @@
 				2DFB50D917584D4D00F02D49 /* DeviceListViewController.m in Sources */,
 				2DFB50DE1758903A00F02D49 /* IndexViewController.m in Sources */,
 				2DC1A022175C5E81000FBB29 /* Common.m in Sources */,
+				2DD434F8175DDF6000950BA3 /* NSObject+SBJSON.m in Sources */,
+				2DD434F9175DDF6000950BA3 /* NSString+SBJSON.m in Sources */,
+				2DD434FA175DDF6000950BA3 /* SBJSON.m in Sources */,
+				2DD434FB175DDF6000950BA3 /* SBJsonBase.m in Sources */,
+				2DD434FC175DDF6000950BA3 /* SBJsonParser.m in Sources */,
+				2DD434FD175DDF6000950BA3 /* SBJsonWriter.m in Sources */,
+				2DD43500175E3F7D00950BA3 /* CoAPProcessOperation.m in Sources */,
+				2DD43508175ED41100950BA3 /* MBProgressHUD.m in Sources */,
+				2DD4350D175F192300950BA3 /* PairMacIPOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,7 +687,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LampIphoneApp/LampIphoneApp-Prefix.pch";
 				INFOPLIST_FILE = "LampIphoneApp/LampIphoneApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LampIphoneApp/vend/ZBarSDK\"",
@@ -622,7 +706,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LampIphoneApp/LampIphoneApp-Prefix.pch";
 				INFOPLIST_FILE = "LampIphoneApp/LampIphoneApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LampIphoneApp/vend/ZBarSDK\"",

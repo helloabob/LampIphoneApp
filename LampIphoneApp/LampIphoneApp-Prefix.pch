@@ -21,12 +21,18 @@
 
 #define ip_addr @"192.168.11.54"
 
-#define app_default_background_color [UIColor colorWithRed:211.0/255.0 green:215.0/255.0 blue:212.0/255.0 alpha:1.0f]
+//#define app_default_background_color [UIColor colorWithRed:211.0/255.0 green:215.0/255.0 blue:212.0/255.0 alpha:1.0f]
+
+#define app_default_background_color [UIColor colorWithRed:237.0/255.0 green:237.0/255.0 blue:237.0/255.0 alpha:1.0f]
+
+#define app_philips_color [UIColor colorWithRed:11.0/255.0 green:94.0/255.0 blue:215.0/255.0 alpha:1]
 
 #define CalculatePowerRate(a) (0.086*a+0.103)
 
 #define PowerBalanceTypeName    @"powerBalance"
 #define LuxSpaceTypeName        @"luxSpace"
+
+#define MaxDimmingLevel         220.0
 
 /**********device database keys*************/
 #define DeviceNameKey           @"deviceNameKey"

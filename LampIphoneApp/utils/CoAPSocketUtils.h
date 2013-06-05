@@ -12,9 +12,13 @@
     CFSocketRef _socket;
 }
 
-- (void) sendMessage;
+- (void)sendMessage;
 
 
 + (void)sendSocket:(const char *)payload withIP:(const char *)ip;
+
++ (NSString *)checkSocketWithIp:(const char *)ip;
+
++ (NSString *)statusSocketWithIp:(const char *)ip;
 
 @end

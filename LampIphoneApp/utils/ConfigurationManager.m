@@ -39,7 +39,7 @@
     //init office list data.
     NSMutableArray *arrayOffice = [NSMutableArray array];
     NSDictionary *office1 = [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"myOffice",
+                             @"No2_2F20#",
                              OfficeNameKey,
                              [NSArray arrayWithObjects:@"light0",@"light1",@"light2",@"light3", nil],
                              OfficeDeviceNameKey, nil];

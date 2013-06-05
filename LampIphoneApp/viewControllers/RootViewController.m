@@ -23,6 +23,7 @@
 @interface RootViewController () {
     SystemManagerViewController *systemController;
     OfficeListViewController *officeController;
+    UIButton *btnEnabled;
 }
 
 @end
@@ -34,6 +35,12 @@
 
 - (void)dealloc {
     NSLog(@"root_view_controller_dealloc");
+    self.btn1 = nil;
+    self.btn2 = nil;
+    self.btn3 = nil;
+    self.btn4 = nil;
+    self.btn5 = nil;
+    self.btn6 = nil;
     self.lights = nil;
     self.sli = nil;
     [super dealloc];
@@ -62,6 +69,15 @@
     
 //    [self.navigationItem.backBarButtonItem setTitle:@"Back"];
     [self.navigationItem hidesBackButton];
+    
+    btnEnabled = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnEnabled.frame = CGRectMake(20, 376, 30, 30);
+    [btnEnabled setImage:[UIImage imageNamed:@"cbx0"] forState:UIControlStateNormal];
+    [btnEnabled setImage:[UIImage imageNamed:@"cbx1"] forState:UIControlStateSelected];
+    [btnEnabled addTarget:self action:@selector(btnEnabledTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnEnabled];
+    self.sli.enabled = NO;
+    
     
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(gotoPreviousViewController)];
     
@@ -96,6 +112,10 @@
     
 //    NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
     
+    [self.btn3 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.btn4 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.btn5 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.btn6 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     
     UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnRight setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
@@ -121,6 +141,28 @@
 //    viewBlack.backgroundColor = [UIColor blackColor];
 //    viewBlack.alpha = 0.5;
 //    [self.view addSubview:viewBlack];
+}
+
+- (void)btnEnabledTapped:(UIButton *)sender {
+//    sender.selected = !sender.selected;
+    [self updateControllerState:!sender.selected];
+}
+
+- (void)updateControllerState:(BOOL)selected {
+    btnEnabled.selected = selected;
+    if (btnEnabled.selected) {
+        self.sli.enabled = YES;
+        self.btn3.enabled = NO;
+        self.btn4.enabled = NO;
+        self.btn5.enabled = NO;
+        self.btn6.enabled = NO;
+    } else {
+        self.sli.enabled = NO;
+        self.btn3.enabled = YES;
+        self.btn4.enabled = YES;
+        self.btn5.enabled = YES;
+        self.btn6.enabled = YES;
+    }
 }
 
 - (void)dimmingChanged:(id)sender {
@@ -151,6 +193,7 @@
         }
             break;
         case 3: {
+            [self updateControllerState:NO];
             NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
             for (NSDictionary *dict in array) {
                 ChangeDimmingValue([[dict objectForKey:DimmingLevelKey] intValue], [dict objectForKey:DeviceIpKey]);
@@ -159,6 +202,7 @@
 //            [CoAPSocketUtils sendSocket:"{\"b\":55}" withIP:ip_addr];
             break;
         case 4: {
+            [self updateControllerState:NO];
             NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
             for (NSDictionary *dict in array) {
                 ChangeDimmingValue([[dict objectForKey:DimmingLevelKey] intValue], [dict objectForKey:DeviceIpKey]);
@@ -168,6 +212,7 @@
 //            [CoAPSocketUtils sendSocket:"{\"b\":110}" withIP:ip_addr];
             break;
         case 5: {
+            [self updateControllerState:NO];
             NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
             for (NSDictionary *dict in array) {
                 ChangeDimmingValue([[dict objectForKey:DimmingLevelKey] intValue], [dict objectForKey:DeviceIpKey]);
@@ -177,6 +222,7 @@
 //            [CoAPSocketUtils sendSocket:"{\"b\":165}" withIP:ip_addr];
             break;
         case 6: {
+            [self updateControllerState:NO];
             NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
             for (NSDictionary *dict in array) {
                 ChangeDimmingValue([[dict objectForKey:DimmingLevelKey] intValue], [dict objectForKey:DeviceIpKey]);

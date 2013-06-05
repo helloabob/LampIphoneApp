@@ -10,6 +10,8 @@
 
 #import "ConfigurationManager.h"
 
+#import "CoAPSocketUtils.h"
+
 @interface DeviceConfigViewController ()
 
 @end
@@ -58,13 +60,14 @@
     // Do any additional setup after loading the view from its nib.
 //    self.title = @"Device Config";
 //    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(tt) userInfo:nil repeats:NO];
-    NSLog(@"title:%@",self.title);
+//    NSLog(@"title:%@",self.title);
     self.txtName.text = self.deviceName;
     
     NSDictionary *dict = [ConfigurationManager getLightInfoWithLightName:self.deviceName];
     
     self.lblType.text = [dict objectForKey:DeviceTypeKey];
     self.txtIp.text = [dict objectForKey:DeviceIpKey];
+    self.txtMac.text = [dict objectForKey:DeviceMacKey];
     
     self.txtIp.returnKeyType = UIReturnKeyDone;
     self.txtMac.returnKeyType = UIReturnKeyDone;
@@ -85,7 +88,10 @@
     [btn2 addTarget:self action:@selector(btnCancelTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn2];
     
-    
+}
+
+- (IBAction)btnCheckTapped:(id)sender {
+//    [CoAPSocketUtils statusSocketWithIp:"192.168.11.61"];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

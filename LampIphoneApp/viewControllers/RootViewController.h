@@ -14,12 +14,12 @@
 
 @property (strong, nonatomic) NSArray *lights;
 
-@property (strong, nonatomic) UIButton *btn1;
-@property (strong, nonatomic) UIButton *btn2;
-@property (strong, nonatomic) UIButton *btn3;
-@property (strong, nonatomic) UIButton *btn4;
-@property (strong, nonatomic) UIButton *btn5;
-@property (strong, nonatomic) UIButton *btn6;
+@property (strong, nonatomic) IBOutlet UIButton *btn1;
+@property (strong, nonatomic) IBOutlet UIButton *btn2;
+@property (strong, nonatomic) IBOutlet UIButton *btn3;
+@property (strong, nonatomic) IBOutlet UIButton *btn4;
+@property (strong, nonatomic) IBOutlet UIButton *btn5;
+@property (strong, nonatomic) IBOutlet UIButton *btn6;
 
 @property (strong, nonatomic) IBOutlet UISlider *sli;
 
