@@ -62,6 +62,9 @@ static void TCPServerConnectCallBack(CFSocketRef socket, CFSocketCallBackType ty
 
 + (NSString *)statusSocketWithIp:(const char *)ip {
     //aE'{"h":0,"m":25,"o":true,"b":128}
+    if (ip == NULL || strlen(ip) < 5) {
+        return nil;
+    }
     int sockfd;
     sockfd = socket(AF_INET,SOCK_DGRAM,0);
     if(sockfd< 0){
@@ -126,6 +129,9 @@ void mytimeout() {
 }
 
 + (NSString *)checkSocketWithIp:(const char *)ip {
+    if (ip == NULL || strlen(ip) < 5) {
+        return nil;
+    }
     int sockfd;
     sockfd = socket(AF_INET,SOCK_DGRAM,0);
     if(sockfd< 0){

@@ -1,29 +1,22 @@
 //
-//  SystemManagerViewController.m
+//  PresetListViewController.m
 //  LampIphoneApp
 //
-//  Created by wangbo on 13-5-27.
+//  Created by wangbo on 13-6-6.
 //  Copyright (c) 2013年 wangbo. All rights reserved.
 //
 
-#import "SystemManagerViewController.h"
-
-#import "OfficeDetailViewController.h"
-
 #import "PresetListViewController.h"
 
-enum {
-    PresetConfigRow = 0,
-    DeviceConfigRow,
-};
+#import "PresetConfigViewController.h"
 
-@interface SystemManagerViewController () {
+@interface PresetListViewController () {
     NSArray *arrayMenu;
 }
 
 @end
 
-@implementation SystemManagerViewController
+@implementation PresetListViewController
 
 @synthesize tblSystem = _tblSystem;
 
@@ -47,10 +40,9 @@ enum {
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     self.title = @"System Config";
     
-    arrayMenu = [[NSArray alloc] initWithObjects:@"Preset Configuration", @"Device Configuration", nil];
+    arrayMenu = [[NSArray alloc] initWithObjects:@"preset1", @"preset2", @"preset3", @"preset4", nil];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
@@ -73,13 +65,13 @@ enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    return arrayMenu.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell1";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
@@ -96,23 +88,20 @@ enum {
 {
     // Navigation logic may go here. Create and push another view controller.
     
-    if (indexPath.row == DeviceConfigRow) {
-//        DeviceListViewController *deviceViewController = [[DeviceListViewController alloc] init];
-//        [self.navigationController pushViewController:deviceViewController animated:YES];
-//        [deviceViewController release];
-        OfficeDetailViewController *detailViewController = [[OfficeDetailViewController alloc] init];
-//        detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
-        detailViewController.roomIndex = indexPath.row;
+//    if (indexPath.row == DeviceConfigRow) {
+        //        DeviceListViewController *deviceViewController = [[DeviceListViewController alloc] init];
+        //        [self.navigationController pushViewController:deviceViewController animated:YES];
+        //        [deviceViewController release];
+    PresetConfigViewController *detailViewController = [[PresetConfigViewController alloc] init];
+    detailViewController.title = [arrayMenu objectAtIndex:indexPath.row];
+        //        detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
+//        detailViewController.roomIndex = indexPath.row;
         // ...
         // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        [detailViewController release];
-        
-    } else if (indexPath.row == PresetConfigRow) {
-        PresetListViewController *presetViewController = [[PresetListViewController alloc] init];
-        [self.navigationController pushViewController:presetViewController animated:YES];
-        [presetViewController release];
-    }
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+//
+//    }
     
     [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0.5f];
 }

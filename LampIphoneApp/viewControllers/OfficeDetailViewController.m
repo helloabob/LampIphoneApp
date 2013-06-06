@@ -155,10 +155,17 @@ static BOOL isOn;
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     NSLog(@"operation_count:%d",queue.operationCount);
-    [queue setMaxConcurrentOperationCount:65];
-    for (int i = 30; i < 65; i ++) {
+    [queue setMaxConcurrentOperationCount:8];
+    NSArray *arrayips = [NSArray arrayWithObjects:@"192.168.1.138",@"192.168.1.140",@"192.168.1.142",@"192.168.1.149", nil];
+//    for (int i = 30; i < 65; i ++) {
+//        CoAPProcessOperation *op = [[CoAPProcessOperation alloc] init];
+//        op.theIP = [NSString stringWithFormat:@"192.168.11.%d",i];
+//        [queue addOperation:op];
+//        [op release];
+//    }
+    for (NSString *tmpip in arrayips) {
         CoAPProcessOperation *op = [[CoAPProcessOperation alloc] init];
-        op.theIP = [NSString stringWithFormat:@"192.168.11.%d",i];
+        op.theIP = tmpip;
         [queue addOperation:op];
         [op release];
     }
@@ -269,11 +276,11 @@ static BOOL isOn;
         [ConfigurationManager changeLightDimming:[NSNumber numberWithInt:lastDimmingValue] forLightName:self.lblDevice.text];
     }
     
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    hud.labelText = @"Loading...";
-    hud.dimBackground = YES;
-    [self.navigationController.view addSubview:hud];
-    [hud show:YES];
+//    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//    hud.labelText = @"Loading...";
+//    hud.dimBackground = YES;
+//    [self.navigationController.view addSubview:hud];
+//    [hud show:YES];
     
     lightIndex = btn.tag - 1;
     [self getLightInfo];
@@ -288,12 +295,27 @@ static BOOL isOn;
     cur_ip = [[self.lightArray objectAtIndex:lightIndex] objectForKey:DeviceIpKey];
     NSDictionary *info = [self getHardwareInfo:cur_ip];
     NSLog(@"%@",info);
+    if (!info) {
+        return;
+    }
     self.lblRunningTime.text = [NSString stringWithFormat:@"%dh %dm",[[info objectForKey:@"h"] intValue],[[info objectForKey:@"m"] intValue]];
+    dimming = [[info objectForKey:@"b"] doubleValue];
+    self.lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(dimming)];
+    //    self.lblDimming.text = [NSString stringWithFormat:@"%d",(int)dimming];
+    self.lblDimming.text = [NSString stringWithFormat:@"%d%%",(int)(dimming/MaxDimmingLevel*100)];
+    self.sliDimming.value = dimming;
     
-    [hud hide:YES];
-    [hud removeFromSuperview];
-    [hud release];
-    hud = nil;
+    int io = [[info objectForKey:@"o"] intValue];
+    if (io == 0) {
+        self.lblPower.text = @"0.00(w)";
+        self.lblDimming.text = @"0%";
+        self.sliDimming.value = 0;
+    }
+    
+//    [hud hide:YES];
+//    [hud removeFromSuperview];
+//    [hud release];
+//    hud = nil;
 }
 
 - (NSDictionary *)getHardwareInfo:(NSString *)ip_address {

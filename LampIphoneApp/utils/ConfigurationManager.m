@@ -19,6 +19,8 @@
 + (void)registerDefaultData {
     //init device list data.
     NSMutableArray *array = [NSMutableArray array];
+    NSArray *arrayMAC = [NSArray arrayWithObjects:@"706f77d82750", @"706f77d54031", @"706f77d63964", @"706f77d72756", nil];
+    NSArray *arrayIP = [NSArray arrayWithObjects:@"192.168.1.149", @"192.168.1.138", @"192.168.1.140", @"192.168.142.", nil];
     for (int i = 0; i < 4; i ++) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               [NSString stringWithFormat:@"light%d",i],
@@ -29,8 +31,10 @@
                               LastOnTimeIntervalKey,
                               PowerBalanceTypeName,
                               DeviceTypeKey,
-                              @"192.168.11.61",
-                              DeviceIpKey, nil];
+                              [arrayIP objectAtIndex:i],
+                              DeviceIpKey,
+                              [arrayMAC objectAtIndex:i],
+                              DeviceMacKey, nil];
         [array addObject:dict];
     }
     [self registerObject:array forKey:DeviceUserDefaultKey];
