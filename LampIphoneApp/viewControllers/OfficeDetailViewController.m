@@ -295,6 +295,7 @@ static BOOL isOn;
     cur_ip = [[self.lightArray objectAtIndex:lightIndex] objectForKey:DeviceIpKey];
     NSDictionary *info = [self getHardwareInfo:cur_ip];
 //    NSLog(@"%@",info);
+    
     if (!info) {
         return;
     }
