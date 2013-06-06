@@ -294,7 +294,7 @@ static BOOL isOn;
     lastDimmingValue = dimming;
     cur_ip = [[self.lightArray objectAtIndex:lightIndex] objectForKey:DeviceIpKey];
     NSDictionary *info = [self getHardwareInfo:cur_ip];
-    NSLog(@"%@",info);
+//    NSLog(@"%@",info);
     if (!info) {
         return;
     }
