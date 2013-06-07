@@ -21,6 +21,7 @@
 @synthesize tblSystem = _tblSystem;
 
 - (void)dealloc {
+    NSLog(@"presetlistViewController_dealloc");
     self.tblSystem = nil;
     [arrayMenu release];
     arrayMenu = nil;

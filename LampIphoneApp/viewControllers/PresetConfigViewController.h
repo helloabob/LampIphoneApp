@@ -15,5 +15,7 @@
 @property (nonatomic, strong) IBOutlet UISlider *slider3;
 @property (nonatomic, strong) IBOutlet UISlider *slider4;
 
+@property (nonatomic, strong) NSMutableDictionary *ip_dict;
+
 
 @end

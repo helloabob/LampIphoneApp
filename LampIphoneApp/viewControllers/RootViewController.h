@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController
+#import "OfficeDetailInfoView.h"
+
+@interface RootViewController : UIViewController<OfficeDetailInfoViewDelegate>
 
 - (IBAction)btnTapped:(id)sender;
 
 @property (strong, nonatomic) NSArray *lights;
+
+@property (strong, nonatomic) IBOutlet UIView *buttonMaskView;
 
 @property (strong, nonatomic) IBOutlet UIButton *btn1;
 @property (strong, nonatomic) IBOutlet UIButton *btn2;

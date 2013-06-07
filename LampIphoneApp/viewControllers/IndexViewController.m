@@ -57,11 +57,18 @@
     
     UIButton *btn = [UIButton buttonWithType:110];
     btn.tintColor = [UIColor blueColor];
-    btn.frame = CGRectMake(100, 200, 120, 40);
+    btn.frame = CGRectMake(100, 240, 120, 40);
 //    btn.titleLabel.text = @"Start";
     [btn addTarget:self action:@selector(gotoScan) forControlEvents:UIControlEventTouchUpInside];
-    [btn setTitle:@"Start" forState:UIControlStateNormal];
+    [btn setTitle:@"Scan" forState:UIControlStateNormal];
     [self.view addSubview:btn];
+    
+    btn = [UIButton buttonWithType:110];
+    btn.frame = CGRectMake(230, 350, 80, 35);
+    [btn addTarget:self action:@selector(btnEnterTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"Enter" forState:UIControlStateNormal];
+    [self.view addSubview:btn];
+    
     
 //    self.arrayMenu = [NSArray arrayWithObjects:@"my office",@"Electronics labs", nil];
     

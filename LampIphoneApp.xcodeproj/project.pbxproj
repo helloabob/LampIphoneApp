@@ -72,6 +72,7 @@
 		2DD435181760207700950BA3 /* PresetListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD435161760207600950BA3 /* PresetListViewController.xib */; };
 		2DD4351C1760264E00950BA3 /* PresetConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4351A1760264C00950BA3 /* PresetConfigViewController.m */; };
 		2DD4351D1760264E00950BA3 /* PresetConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD4351B1760264D00950BA3 /* PresetConfigViewController.xib */; };
+		2DD4352117606D0200950BA3 /* OfficeDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4352017606D0200950BA3 /* OfficeDetailInfoView.m */; };
 		2DE27F5A1756E5AD00AF109E /* highlight_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE27F591756E5AD00AF109E /* highlight_back.png */; };
 		2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */; };
 		2DE27F611757233D00AF109E /* DeviceConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */; };
@@ -200,6 +201,8 @@
 		2DD435191760264B00950BA3 /* PresetConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetConfigViewController.h; sourceTree = "<group>"; };
 		2DD4351A1760264C00950BA3 /* PresetConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetConfigViewController.m; sourceTree = "<group>"; };
 		2DD4351B1760264D00950BA3 /* PresetConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresetConfigViewController.xib; sourceTree = "<group>"; };
+		2DD4351F17606D0200950BA3 /* OfficeDetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfficeDetailInfoView.h; sourceTree = "<group>"; };
+		2DD4352017606D0200950BA3 /* OfficeDetailInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfficeDetailInfoView.m; sourceTree = "<group>"; };
 		2DE27F591756E5AD00AF109E /* highlight_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight_back.png; sourceTree = "<group>"; };
 		2DE27F5B1756E7ED00AF109E /* ConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationManager.h; sourceTree = "<group>"; };
 		2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationManager.m; sourceTree = "<group>"; };
@@ -273,6 +276,7 @@
 		2DCB75AA175317E3000718F2 /* LampIphoneApp */ = {
 			isa = PBXGroup;
 			children = (
+				2DD4351E17606CAC00950BA3 /* views */,
 				2DCB75F617544964000718F2 /* vend */,
 				2DCB75F2175444F1000718F2 /* utils */,
 				2DCB75CD17531BC6000718F2 /* images */,
@@ -500,6 +504,15 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		2DD4351E17606CAC00950BA3 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				2DD4351F17606D0200950BA3 /* OfficeDetailInfoView.h */,
+				2DD4352017606D0200950BA3 /* OfficeDetailInfoView.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -630,6 +643,7 @@
 				2DD4350D175F192300950BA3 /* PairMacIPOperation.m in Sources */,
 				2DD435171760207700950BA3 /* PresetListViewController.m in Sources */,
 				2DD4351C1760264E00950BA3 /* PresetConfigViewController.m in Sources */,
+				2DD4352117606D0200950BA3 /* OfficeDetailInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

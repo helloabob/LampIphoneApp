@@ -19,11 +19,15 @@
 + (void)registerDefaultData {
     //init device list data.
     NSMutableArray *array = [NSMutableArray array];
-    NSArray *arrayMAC = [NSArray arrayWithObjects:@"706f77d82750", @"706f77d54031", @"706f77d63964", @"706f77d72756", nil];
-    NSArray *arrayIP = [NSArray arrayWithObjects:@"192.168.1.149", @"192.168.1.138", @"192.168.1.140", @"192.168.142.", nil];
+//    NSArray *arrayMAC = [NSArray arrayWithObjects:@"706f77d82750", @"706f77d54031", @"706f77d63964", @"706f77d72756", nil];
+//    NSArray *arrayIP = [NSArray arrayWithObjects:@"192.168.1.149", @"192.168.1.138", @"192.168.1.140", @"192.168.1.142", nil];
+    
+    NSArray *arrayMAC = [NSArray arrayWithObjects:@"706f77d54031", @"706f77d63964", @"706f77d72756", @"706f77d82750", nil];
+    NSArray *arrayIP = [NSArray arrayWithObjects:@"192.168.1.138", @"192.168.1.140", @"192.168.1.142", @"192.168.1.149", nil];
+    
     for (int i = 0; i < 4; i ++) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSString stringWithFormat:@"light%d",i],
+                              [NSString stringWithFormat:lightx,(i+1)],
                               DeviceNameKey,
                               [NSNumber numberWithInt:0],
                               DimmingLevelKey,
@@ -45,7 +49,7 @@
     NSDictionary *office1 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"No2_2F20#",
                              OfficeNameKey,
-                             [NSArray arrayWithObjects:@"light0",@"light1",@"light2",@"light3", nil],
+                             [NSArray arrayWithObjects:light1, light2, light3, light4, nil],
                              OfficeDeviceNameKey, nil];
     [arrayOffice addObject:office1];
     
@@ -63,28 +67,28 @@
     NSDictionary *preset1 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset1",
                              PresetNameKey,
-                             [NSArray arrayWithObjects:@"light0:50",@"light1:100",@"light2:150",@"light3:200", nil],
+                             [NSArray arrayWithObjects:@"light_01:50",@"light_02:100",@"light_03:150",@"light_04:200", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset1];
     
     NSDictionary *preset2 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset2",
                              PresetNameKey,
-                             [NSArray arrayWithObjects:@"light0:100",@"light1:100",@"light2:150",@"light3:200", nil],
+                             [NSArray arrayWithObjects:@"light_01:100",@"light_02:100",@"light_03:150",@"light_04:200", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset2];
     
     NSDictionary *preset3 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset3",
                              PresetNameKey,
-                             [NSArray arrayWithObjects:@"light0:0",@"light1:100",@"light2:150",@"light3:200", nil],
+                             [NSArray arrayWithObjects:@"light_01:0",@"light_02:100",@"light_03:150",@"light_04:200", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset3];
     
     NSDictionary *preset4 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset4",
                              PresetNameKey,
-                             [NSArray arrayWithObjects:@"light0:200",@"light1:100",@"light2:150",@"light3:200", nil],
+                             [NSArray arrayWithObjects:@"light_01:200",@"light_02:100",@"light_03:150",@"light_04:200", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset4];
     

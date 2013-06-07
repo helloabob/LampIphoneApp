@@ -20,10 +20,15 @@
 
 #import "AppDelegate.h"
 
+#import "JSON.h"
+
+#import "PresetListViewController.h"
+
 @interface RootViewController () {
     SystemManagerViewController *systemController;
     OfficeListViewController *officeController;
     UIButton *btnEnabled;
+    OfficeDetailInfoView *detailView;
 }
 
 @end
@@ -32,6 +37,8 @@
 
 @synthesize lights = _lights;
 @synthesize sli = _sli;
+
+@synthesize buttonMaskView = _buttonMaskView;
 
 - (void)dealloc {
     NSLog(@"root_view_controller_dealloc");
@@ -43,6 +50,7 @@
     self.btn6 = nil;
     self.lights = nil;
     self.sli = nil;
+    self.buttonMaskView = nil;
     [super dealloc];
 }
 
@@ -79,6 +87,7 @@
     self.sli.enabled = NO;
     
     
+    self.buttonMaskView.hidden = YES;
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(gotoPreviousViewController)];
     
 //    [UIBarButtonItem alloc] initWithTitle:<#(NSString *)#> style:UIBarButtonSystemItemUndo target:<#(id)#> action:<#(SEL)#>
@@ -112,10 +121,63 @@
     
 //    NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
     
+    UIButton *btn = [UIButton buttonWithType:110];
+    [btn setTitle:@"ON" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(9, 196, 145, 50);
+    btn.titleLabel.font = app_philips_button_font_size;
+    btn.tag = 111;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    btn = [UIButton buttonWithType:110];
+    [btn setTitle:@"OFF" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(164, 196, 145, 50);
+    btn.titleLabel.font = app_philips_button_font_size;
+    btn.tag = 110;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:[UIImage imageNamed:@"light_icon"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
+    btn.frame = CGRectMake(100, 43, 45, 45);
+    btn.tag = 121;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:[UIImage imageNamed:@"light_icon"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
+    btn.frame = CGRectMake(176, 43, 45, 45);
+    btn.tag = 122;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:[UIImage imageNamed:@"light_icon"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
+    btn.frame = CGRectMake(100, 110, 45, 45);
+    btn.tag = 123;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:[UIImage imageNamed:@"light_icon"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
+    btn.frame = CGRectMake(176, 110, 45, 45);
+    btn.tag = 124;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
     [self.btn3 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.btn4 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.btn5 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.btn6 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    
+    self.btn3.titleLabel.font = app_philips_button_font_size;
+    self.btn4.titleLabel.font = app_philips_button_font_size;
+    self.btn5.titleLabel.font = app_philips_button_font_size;
+    self.btn6.titleLabel.font = app_philips_button_font_size;
     
     UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnRight setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
@@ -127,6 +189,11 @@
     [self.sli addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
     
     [item release];
+    
+    detailView = [[OfficeDetailInfoView alloc] initWithFrame:CGRectMake(0, 196, 320, self.view.frame.size.height-196)];
+    [self.view addSubview:detailView];
+    detailView.delegate = self;
+    [detailView hideWithAnimated:NO];
     
 //    UIBarButtonItem *itemHome = [[UIBarButtonItem alloc] initWithTitle:@"Office List" style:UIBarButtonItemStyleDone target:self action:@selector(gotoOfficeList)];
 //    self.navigationItem.leftBarButtonItem = itemHome;
@@ -143,6 +210,14 @@
 //    [self.view addSubview:viewBlack];
 }
 
+- (void)viewDidClose {
+    [self unSelectAllLightButton];
+}
+
+- (void)dimmingDidChangeValue:(int)value forName:(NSString *)lightName {
+    
+}
+
 - (void)btnEnabledTapped:(UIButton *)sender {
 //    sender.selected = !sender.selected;
     [self updateControllerState:!sender.selected];
@@ -156,12 +231,14 @@
         self.btn4.enabled = NO;
         self.btn5.enabled = NO;
         self.btn6.enabled = NO;
+        self.buttonMaskView.hidden = NO;
     } else {
         self.sli.enabled = NO;
         self.btn3.enabled = YES;
         self.btn4.enabled = YES;
         self.btn5.enabled = YES;
         self.btn6.enabled = YES;
+        self.buttonMaskView.hidden = YES;
     }
 }
 
@@ -177,7 +254,7 @@
 //    [[CoAPSocket sharedInstance] openUDPServer];
     UIButton *btn = (UIButton *)sender;
     switch (btn.tag) {
-        case 1: {
+        case 111: {
             NSArray *array = [ConfigurationManager getLightsInfoWithOfficeName:[Common currentOfficeName]];
             for (NSDictionary *dict in array) {
                 TurnOnOff(@"true", [dict objectForKey:DeviceIpKey]);
@@ -185,7 +262,7 @@
             //            [CoAPSocketUtils sendSocket:"{\"o\":true}" withIP:ip_addr];
         }
         break;
-        case 2: {
+        case 110: {
             NSArray *array = [ConfigurationManager getLightsInfoWithOfficeName:[Common currentOfficeName]];
             for (NSDictionary *dict in array) {
                 TurnOnOff(@"false", [dict objectForKey:DeviceIpKey]);
@@ -231,9 +308,90 @@
 //            ChangeDimmingValue(220, ip_addr);
 //            [CoAPSocketUtils sendSocket:"{\"b\":220}" withIP:ip_addr];
             break;
+        case 121: {
+            if (btn.selected) {
+                return;
+            }
+            [self unSelectAllLightButton];
+            [btn setSelected:YES];
+            [detailView updateControlInfo:[self getDetailInfo:light1]];
+            [detailView showWithAnimated:YES];
+        }
+            break;
+        case 122: {
+            if (btn.selected) {
+                return;
+            }
+            [self unSelectAllLightButton];
+            [btn setSelected:YES];
+            [detailView updateControlInfo:[self getDetailInfo:light2]];
+            [detailView showWithAnimated:YES];
+        }
+            break;
+        case 123: {
+            if (btn.selected) {
+                return;
+            }
+            [self unSelectAllLightButton];
+            [btn setSelected:YES];
+            [detailView updateControlInfo:[self getDetailInfo:light3]];
+            [detailView showWithAnimated:YES];
+        }
+            break;
+        case 124: {
+            if (btn.selected) {
+                return;
+            }
+            [self unSelectAllLightButton];
+            [btn setSelected:YES];
+            [detailView updateControlInfo:[self getDetailInfo:light4]];
+            [detailView showWithAnimated:YES];
+        }
+            break;
         default:
             break;
     }
+}
+
+- (NSDictionary *)getDetailInfo:(NSString *)lightName {
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    NSArray *array = [ConfigurationManager objectForKey:DeviceUserDefaultKey];
+    for (NSDictionary *dict in array) {
+        if ([[dict objectForKey:DeviceNameKey] isEqualToString:lightName]) {
+            [userInfo setObject:lightName forKey:DetailDeviceNameKey];
+            [userInfo setObject:[dict objectForKey:DeviceIpKey] forKey:DetailIPKey];
+            NSString *result = [CoAPSocketUtils statusSocketWithIp:[[dict objectForKey:DeviceIpKey] UTF8String]];
+            if (result && result.length > 20) {
+                NSRange range = [result rangeOfString:@"{\"h\":"];
+                if (range.length != 5) {
+                    return userInfo;
+                }
+                NSString *info = [result substringFromIndex:(range.location)];
+                NSDictionary *jsonValue = [info JSONValue];
+                if ([[jsonValue objectForKey:@"o"] intValue] == 0) {
+                    [userInfo setObject:[NSNumber numberWithInt:0] forKey:DetailDimmingKey];
+                } else {
+                    [userInfo setObject:[jsonValue objectForKey:@"b"] forKey:DetailDimmingKey];
+                }
+                [userInfo setObject:[jsonValue objectForKey:@"h"] forKey:DetailRunningHourKey];
+                [userInfo setObject:[jsonValue objectForKey:@"m"] forKey:DetailRunningMinuteKey];
+                [userInfo setObject:[jsonValue objectForKey:@"o"] forKey:DetailIOKey];
+            }
+            break;
+        }
+    }
+    return userInfo;
+}
+
+- (void)unSelectAllLightButton {
+    UIButton *btn = (UIButton *)[self.view viewWithTag:121];
+    [btn setSelected:NO];
+    btn = (UIButton *)[self.view viewWithTag:122];
+    [btn setSelected:NO];
+    btn = (UIButton *)[self.view viewWithTag:123];
+    [btn setSelected:NO];
+    btn = (UIButton *)[self.view viewWithTag:124];
+    [btn setSelected:NO];
 }
 
 - (void)gotoOfficeList {
@@ -244,10 +402,13 @@
 }
 
 - (void)gotoSettingView {
-    if (!systemController) {
-        systemController = [[SystemManagerViewController alloc] init];
-    }
-    [self.navigationController pushViewController:systemController animated:YES];
+    PresetListViewController *presetViewController = [[PresetListViewController alloc] init];
+    [self.navigationController pushViewController:presetViewController animated:YES];
+    [presetViewController release];
+//    if (!systemController) {
+//        systemController = [[SystemManagerViewController alloc] init];
+//    }
+//    [self.navigationController pushViewController:systemController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

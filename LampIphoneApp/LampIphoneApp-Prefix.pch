@@ -15,9 +15,20 @@
 #endif
 
 
+#define light1 @"light_01"
+#define light2 @"light_02"
+#define light3 @"light_03"
+#define light4 @"light_04"
+
+#define lightx @"light_0%d"
+
 
 #define ChangeDimmingValue(value,ip) ([CoAPSocketUtils sendSocket:[[NSString stringWithFormat:@"{\"b\":%d}",value] UTF8String] withIP:[ip UTF8String]])
 #define TurnOnOff(value,ip) ([CoAPSocketUtils sendSocket:[[NSString stringWithFormat:@"{\"o\":%@}",value] UTF8String] withIP:[ip UTF8String]])
+
+#define app_philips_button_font_size [UIFont boldSystemFontOfSize:20.0f]
+
+#define app_philips_label_font_size [UIFont boldSystemFontOfSize:15.0f]
 
 #define ip_addr @"192.168.11.54"
 
@@ -57,4 +68,14 @@
 #define PresetDeviceNameKey     @"presetDeviceNameKey"
 
 #define PresetUserDefaultKey    @"presetUserDefaultKey"
+/**********end*************/
+
+/**********office detail info keys*************/
+#define DetailDeviceNameKey     @"detailDeviceNameKey"
+#define DetailDimmingKey        @"detailDimmingKey"
+#define DetailRunningHourKey    @"detailRunningHourKey"
+#define DetailRunningMinuteKey  @"detailRunningMinuteKey"
+#define DetailIOKey             @"detailIOKey"
+#define DetailIPKey             @"detailIPKey"
+
 /**********end*************/
