@@ -67,6 +67,8 @@
     NSDictionary *preset1 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset1",
                              PresetNameKey,
+                             @"preset1",
+                             PresetLabelNameKey,
                              [NSArray arrayWithObjects:@"light_01:50",@"light_02:100",@"light_03:150",@"light_04:200", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset1];
@@ -74,6 +76,8 @@
     NSDictionary *preset2 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset2",
                              PresetNameKey,
+                             @"preset1",
+                             PresetLabelNameKey,
                              [NSArray arrayWithObjects:@"light_01:100",@"light_02:100",@"light_03:150",@"light_04:200", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset2];
@@ -81,6 +85,8 @@
     NSDictionary *preset3 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset3",
                              PresetNameKey,
+                             @"preset1",
+                             PresetLabelNameKey,
                              [NSArray arrayWithObjects:@"light_01:0",@"light_02:100",@"light_03:150",@"light_04:200", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset3];
@@ -88,6 +94,8 @@
     NSDictionary *preset4 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset4",
                              PresetNameKey,
+                             @"preset1",
+                             PresetLabelNameKey,
                              [NSArray arrayWithObjects:@"light_01:200",@"light_02:100",@"light_03:150",@"light_04:200", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset4];

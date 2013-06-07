@@ -12,6 +12,8 @@
 
 static NSString *officeName;
 
+static NSString *configPresetName;
+
 @implementation Common
 
 + (NSString *)currentOfficeName {
@@ -20,6 +22,14 @@ static NSString *officeName;
 
 + (void)setCurrentOfficeName:(NSString *)value {
     officeName = value;
+}
+
++ (NSString *)currentConfigPresetName {
+    return configPresetName;
+}
+
++ (void)setCurrentConfigPresetName:(NSString *)value {
+    configPresetName = value;
 }
 
 @end

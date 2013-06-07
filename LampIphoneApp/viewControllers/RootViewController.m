@@ -40,10 +40,12 @@
 
 @synthesize buttonMaskView = _buttonMaskView;
 
+@synthesize sliderMaskView = _sliderMaskView;
+
 - (void)dealloc {
     NSLog(@"root_view_controller_dealloc");
-    self.btn1 = nil;
-    self.btn2 = nil;
+//    self.btn1 = nil;
+//    self.btn2 = nil;
     self.btn3 = nil;
     self.btn4 = nil;
     self.btn5 = nil;
@@ -51,6 +53,7 @@
     self.lights = nil;
     self.sli = nil;
     self.buttonMaskView = nil;
+    self.sliderMaskView = nil;
     [super dealloc];
 }
 
@@ -87,7 +90,9 @@
     self.sli.enabled = NO;
     
     
+    
     self.buttonMaskView.hidden = YES;
+    self.sliderMaskView.hidden = NO;
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(gotoPreviousViewController)];
     
 //    [UIBarButtonItem alloc] initWithTitle:<#(NSString *)#> style:UIBarButtonSystemItemUndo target:<#(id)#> action:<#(SEL)#>
@@ -169,6 +174,27 @@
     [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
+    
+//    btn = [UIButton buttonWithType:110];
+//    btn.frame = CGRectMake(9, 250, 145, 50);
+//    [btn setTintColor:[UIColor colorWithRed:156.0/255.0 green:193.0/255.0 blue:248.0/255.0 alpha:1.0f]];
+//    [btn setTitle:@"Work" forState:UIControlStateNormal];
+//    btn.titleLabel.font = app_philips_button_font_size;
+//    btn.tag = 131;
+//    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:btn];
+//    
+//    btn = [UIButton buttonWithType:110];
+//    btn.frame = CGRectMake(164, 250, 145, 50);
+////    [btn setTintColor:[UIColor colorWithRed:156.0/255.0 green:193.0/255.0 blue:248.0/255.0 alpha:1.0f]];
+//    [btn setTintColor:[UIColor blueColor]];
+//    [btn setTitle:@"preset1" forState:UIControlStateNormal];
+//    btn.titleLabel.font = app_philips_button_font_size;
+//    btn.tag = 131;
+//    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:btn];
+    
+    
     [self.btn3 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.btn4 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.btn5 setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
@@ -186,7 +212,8 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
     self.navigationItem.rightBarButtonItem = item;
     
-    [self.sli addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+//    [self.sli addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+    [self.sli addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventValueChanged];
     
     [item release];
     
@@ -208,6 +235,16 @@
 //    viewBlack.backgroundColor = [UIColor blackColor];
 //    viewBlack.alpha = 0.5;
 //    [self.view addSubview:viewBlack];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSArray *presets = [ConfigurationManager objectForKey:PresetUserDefaultKey];
+    
+    [self.btn3 setTitle:[[presets objectAtIndex:0] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
+    [self.btn4 setTitle:[[presets objectAtIndex:1] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
+    [self.btn5 setTitle:[[presets objectAtIndex:2] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
+    [self.btn6 setTitle:[[presets objectAtIndex:3] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
 }
 
 - (void)viewDidClose {
@@ -232,6 +269,7 @@
         self.btn5.enabled = NO;
         self.btn6.enabled = NO;
         self.buttonMaskView.hidden = NO;
+        self.sliderMaskView.hidden = YES;
     } else {
         self.sli.enabled = NO;
         self.btn3.enabled = YES;
@@ -239,6 +277,7 @@
         self.btn5.enabled = YES;
         self.btn6.enabled = YES;
         self.buttonMaskView.hidden = YES;
+        self.sliderMaskView.hidden = NO;
     }
 }
 

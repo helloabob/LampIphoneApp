@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PresetConfigViewController : UIViewController
+@interface PresetConfigViewController : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UISlider *slider1;
 @property (nonatomic, strong) IBOutlet UISlider *slider2;
@@ -16,6 +16,8 @@
 @property (nonatomic, strong) IBOutlet UISlider *slider4;
 
 @property (nonatomic, strong) NSMutableDictionary *ip_dict;
+
+@property (nonatomic, strong) IBOutlet UITextField *txtLabelName;
 
 
 @end

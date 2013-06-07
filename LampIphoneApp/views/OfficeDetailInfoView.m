@@ -13,6 +13,7 @@
 @interface OfficeDetailInfoView() {
     int offsety;
     int cy;
+    int flag;
 }
 
 @end
@@ -105,7 +106,8 @@
         slider.minimumValue = 0;
         slider.maximumValue = MaxDimmingLevel;
         slider.value = 110;
-        [slider addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        [slider addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventValueChanged];
+//        [slider addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
         [self addSubview:slider];
         [slider release];
         
@@ -122,6 +124,14 @@
 - (void)valueChanged {
 //    [self.delegate dimmingDidChangeValue:slider.value forName:lblDeviceName.text];
     ChangeDimmingValue((int)slider.value, self.ip_address);
+    int dimming = (int)slider.value;
+    int rate = 100 * dimming / MaxDimmingLevel;
+    lblDimming.text = [NSString stringWithFormat:@"%d%%",rate];
+    if (flag == 1) {
+        lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(dimming)];
+    } else {
+        lblPower.text = @"0.00(w)";
+    }
 }
 
 - (void)btnCloseTapped {
@@ -136,7 +146,8 @@
     int rate = 100 * dimming / MaxDimmingLevel;
     lblDimming.text = [NSString stringWithFormat:@"%d%%",rate];
     slider.value = [[userInfo objectForKey:DetailDimmingKey] intValue];
-    if ([[userInfo objectForKey:DetailIOKey] intValue] == 1) {
+    flag = [[userInfo objectForKey:DetailIOKey] intValue];
+    if (flag == 1) {
         lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(dimming)];
     } else {
         lblPower.text = @"0.00(w)";

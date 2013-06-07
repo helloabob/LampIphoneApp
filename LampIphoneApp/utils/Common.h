@@ -14,4 +14,8 @@
 
 + (void)setCurrentOfficeName:(NSString *)value;
 
++ (NSString *)currentConfigPresetName;
+
++ (void)setCurrentConfigPresetName:(NSString *)value;
+
 @end

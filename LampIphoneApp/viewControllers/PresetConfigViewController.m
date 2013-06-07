@@ -67,8 +67,9 @@
     NSArray *array = [ConfigurationManager objectForKey:PresetUserDefaultKey];
     NSArray *dict = nil;
     for (NSDictionary *tmp in array) {
-        if ([[tmp objectForKey:PresetNameKey] isEqualToString:self.title]) {
+        if ([[tmp objectForKey:PresetNameKey] isEqualToString:[Common currentConfigPresetName]]) {
             dict = [tmp objectForKey:PresetDeviceNameKey];
+            self.txtLabelName.text = [tmp objectForKey:PresetLabelNameKey];
             break;
         }
     }
@@ -95,12 +96,26 @@
         [self.ip_dict setObject:[light objectForKey:DeviceIpKey] forKey:[light objectForKey:DeviceNameKey]];
     }
     
-    [self.slider1 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
-    [self.slider2 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
-    [self.slider3 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
-    [self.slider4 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+    [self.slider1 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventValueChanged];
+    [self.slider2 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventValueChanged];
+    [self.slider3 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventValueChanged];
+    [self.slider4 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventValueChanged];
+    
+//    [self.slider1 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+//    [self.slider2 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+//    [self.slider3 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+//    [self.slider4 addTarget:self action:@selector(sliderTapped:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+    
+    self.txtLabelName.returnKeyType = UIReturnKeyDone;
+    self.txtLabelName.delegate = self;
+    self.txtLabelName.clearButtonMode = UITextFieldViewModeWhileEditing;
     
 //    [dict release];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)sliderTapped:(UISlider *)slider {
@@ -118,9 +133,13 @@
 - (void)btnSaveTapped {
     NSArray *array = [ConfigurationManager objectForKey:PresetUserDefaultKey];
     NSMutableArray *dict = nil;
-    for (NSDictionary *tmp in array) {
+    for (NSMutableDictionary *tmp in array) {
         if ([[tmp objectForKey:PresetNameKey] isEqualToString:self.title]) {
             dict = [tmp objectForKey:PresetDeviceNameKey];
+            NSString *oldName = [tmp objectForKey:PresetLabelNameKey];
+            if (![oldName isEqualToString:self.txtLabelName.text]) {
+                [tmp setObject:self.txtLabelName.text forKey:PresetLabelNameKey];
+            }
             break;
         }
     }

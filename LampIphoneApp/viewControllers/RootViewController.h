@@ -17,9 +17,10 @@
 @property (strong, nonatomic) NSArray *lights;
 
 @property (strong, nonatomic) IBOutlet UIView *buttonMaskView;
+@property (strong, nonatomic) IBOutlet UIView *sliderMaskView;
 
-@property (strong, nonatomic) IBOutlet UIButton *btn1;
-@property (strong, nonatomic) IBOutlet UIButton *btn2;
+//@property (strong, nonatomic) IBOutlet UIButton *btn1;
+//@property (strong, nonatomic) IBOutlet UIButton *btn2;
 @property (strong, nonatomic) IBOutlet UIButton *btn3;
 @property (strong, nonatomic) IBOutlet UIButton *btn4;
 @property (strong, nonatomic) IBOutlet UIButton *btn5;

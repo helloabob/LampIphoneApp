@@ -10,8 +10,9 @@
 
 #import "PresetConfigViewController.h"
 
+#import "ConfigurationManager.h"
+
 @interface PresetListViewController () {
-    NSArray *arrayMenu;
 }
 
 @end
@@ -23,8 +24,7 @@
 - (void)dealloc {
     NSLog(@"presetlistViewController_dealloc");
     self.tblSystem = nil;
-    [arrayMenu release];
-    arrayMenu = nil;
+    self.arrayMenu = nil;
     [super dealloc];
 }
 
@@ -43,10 +43,21 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"System Config";
     
-    arrayMenu = [[NSArray alloc] initWithObjects:@"preset1", @"preset2", @"preset3", @"preset4", nil];
+    
+//    arrayMenu = [[NSArray alloc] initWithObjects:@"preset1", @"preset2", @"preset3", @"preset4", nil];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSArray *presets = [ConfigurationManager objectForKey:PresetUserDefaultKey];
+    self.arrayMenu = [NSMutableArray array];
+    for (NSDictionary *dict in presets) {
+        [self.arrayMenu addObject:dict];
+    }
+    [self.tblSystem reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,7 +77,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return arrayMenu.count;
+    return self.arrayMenu.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,7 +91,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = [arrayMenu objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetLabelNameKey];
     
     return cell;
 }
@@ -94,7 +105,8 @@
         //        [self.navigationController pushViewController:deviceViewController animated:YES];
         //        [deviceViewController release];
     PresetConfigViewController *detailViewController = [[PresetConfigViewController alloc] init];
-    detailViewController.title = [arrayMenu objectAtIndex:indexPath.row];
+    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetNameKey];
+    [Common setCurrentConfigPresetName:[[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetNameKey]];
         //        detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
 //        detailViewController.roomIndex = indexPath.row;
         // ...

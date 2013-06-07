@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tblSystem;
 
+@property (strong, nonatomic) NSMutableArray *arrayMenu;
+
 @end

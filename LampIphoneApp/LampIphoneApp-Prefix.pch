@@ -66,6 +66,7 @@
 /**********preset database keys*************/
 #define PresetNameKey           @"presetNameKey"
 #define PresetDeviceNameKey     @"presetDeviceNameKey"
+#define PresetLabelNameKey      @"presetLabelNameKey"
 
 #define PresetUserDefaultKey    @"presetUserDefaultKey"
 /**********end*************/
