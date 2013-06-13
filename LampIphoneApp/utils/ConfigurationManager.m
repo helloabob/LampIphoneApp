@@ -16,6 +16,47 @@
 
 @implementation ConfigurationManager
 
++ (void)resetAllPresets {
+    NSMutableArray *arrayPreset = [NSMutableArray array];
+    NSDictionary *preset1 = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"preset1",
+                             PresetNameKey,
+                             @"Desk Work",
+                             PresetLabelNameKey,
+                             [NSArray arrayWithObjects:@"light_01:130",@"light_02:128",@"light_03:130",@"light_04:134", nil],
+                             PresetDeviceNameKey,nil];
+    [arrayPreset addObject:preset1];
+    
+    NSDictionary *preset2 = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"preset2",
+                             PresetNameKey,
+                             @"Meeting",
+                             PresetLabelNameKey,
+                             [NSArray arrayWithObjects:@"light_01:75",@"light_02:132",@"light_03:170",@"light_04:175", nil],
+                             PresetDeviceNameKey,nil];
+    [arrayPreset addObject:preset2];
+    
+    NSDictionary *preset3 = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"preset3",
+                             PresetNameKey,
+                             @"PPT",
+                             PresetLabelNameKey,
+                             [NSArray arrayWithObjects:@"light_01:20",@"light_02:132",@"light_03:22",@"light_04:135", nil],
+                             PresetDeviceNameKey,nil];
+    [arrayPreset addObject:preset3];
+    
+    NSDictionary *preset4 = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"preset4",
+                             PresetNameKey,
+                             @"Rest",
+                             PresetLabelNameKey,
+                             [NSArray arrayWithObjects:@"light_01:32",@"light_02:32",@"light_03:81",@"light_04:83", nil],
+                             PresetDeviceNameKey,nil];
+    [arrayPreset addObject:preset4];
+    
+    [self setObject:arrayPreset forKey:PresetUserDefaultKey];
+}
+
 + (void)registerDefaultData {
     //init device list data.
     NSMutableArray *array = [NSMutableArray array];

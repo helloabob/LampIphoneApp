@@ -26,4 +26,6 @@
 
 + (NSDictionary *)getLightInfoWithLightName:(NSString *)lightName;
 
++ (void)resetAllPresets;
+
 @end

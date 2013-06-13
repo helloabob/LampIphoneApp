@@ -12,6 +12,8 @@
 
 #import "ConfigurationManager.h"
 
+#import "MBProgressHUD.h"
+
 @interface PresetListViewController () {
 }
 
@@ -77,7 +79,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.arrayMenu.count;
+    return self.arrayMenu.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,7 +93,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetLabelNameKey];
+    if (indexPath.row == self.arrayMenu.count) {
+        cell.textLabel.text = @"Reset All Presets";
+    } else {
+        cell.textLabel.text = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetLabelNameKey];
+    }
     
     return cell;
 }
@@ -104,15 +110,25 @@
         //        DeviceListViewController *deviceViewController = [[DeviceListViewController alloc] init];
         //        [self.navigationController pushViewController:deviceViewController animated:YES];
         //        [deviceViewController release];
-    PresetConfigViewController *detailViewController = [[PresetConfigViewController alloc] init];
-    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetNameKey];
-    [Common setCurrentConfigPresetName:[[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetNameKey]];
+    if (indexPath.row == self.arrayMenu.count) {
+        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        hud.labelText = @"Reseting...";
+        [self.navigationController.view addSubview:hud];
+        [hud show:YES];
+        [hud hide:YES afterDelay:1.0f];
+        [ConfigurationManager resetAllPresets];
+    } else {
+        PresetConfigViewController *detailViewController = [[PresetConfigViewController alloc] init];
+        detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetNameKey];
+        [Common setCurrentConfigPresetName:[[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:PresetNameKey]];
         //        detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
-//        detailViewController.roomIndex = indexPath.row;
+        //        detailViewController.roomIndex = indexPath.row;
         // ...
         // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [detailViewController release];
+    }
+    
 //
 //    }
     
