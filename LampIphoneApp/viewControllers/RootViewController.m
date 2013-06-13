@@ -54,6 +54,11 @@
     self.sli = nil;
     self.buttonMaskView = nil;
     self.sliderMaskView = nil;
+    
+    self.btnPreset1 = nil;
+    self.btnPreset2 = nil;
+    self.btnPreset3 = nil;
+    self.btnPreset4 = nil;
     [super dealloc];
 }
 
@@ -75,7 +80,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.view.backgroundColor = app_default_background_color;
+    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"PHILIPS";
     
 //    [self.navigationItem.backBarButtonItem setTitle:@"Back"];
@@ -126,6 +131,7 @@
     
 //    NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
     
+    /*on off button*/
     UIButton *btn = [UIButton buttonWithType:110];
     [btn setTitle:@"ON" forState:UIControlStateNormal];
     btn.frame = CGRectMake(9, 196, 145, 50);
@@ -141,6 +147,45 @@
     btn.tag = 110;
     [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    /*preset button*/
+    btn = [UIButton buttonWithType:110];
+    [btn setTitle:@"preset1" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(9, 250, 145, 50);
+    btn.titleLabel.font = app_philips_button_font_size;
+    btn.tag = 141;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    self.btnPreset1 = btn;
+    
+    btn = [UIButton buttonWithType:110];
+    [btn setTitle:@"preset2" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(164, 250, 145, 50);
+    btn.titleLabel.font = app_philips_button_font_size;
+    btn.tag = 142;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    self.btnPreset2 = btn;
+    
+    btn = [UIButton buttonWithType:110];
+    [btn setTitle:@"preset3" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(9, 304, 145, 50);
+    btn.titleLabel.font = app_philips_button_font_size;
+    btn.tag = 143;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    self.btnPreset3 = btn;
+    
+    btn = [UIButton buttonWithType:110];
+    [btn setTitle:@"preset4" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(164, 304, 145, 50);
+    btn.titleLabel.font = app_philips_button_font_size;
+    btn.tag = 144;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    self.btnPreset4 = btn;
+    
+    /*4 light buttons*/
     
     btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:[UIImage imageNamed:@"light_icon"] forState:UIControlStateNormal];
@@ -173,6 +218,7 @@
     btn.tag = 124;
     [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
     
     
 //    btn = [UIButton buttonWithType:110];
@@ -235,6 +281,8 @@
 //    viewBlack.backgroundColor = [UIColor blackColor];
 //    viewBlack.alpha = 0.5;
 //    [self.view addSubview:viewBlack];
+    
+    [self.view bringSubviewToFront:self.buttonMaskView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -245,6 +293,11 @@
     [self.btn4 setTitle:[[presets objectAtIndex:1] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
     [self.btn5 setTitle:[[presets objectAtIndex:2] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
     [self.btn6 setTitle:[[presets objectAtIndex:3] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
+    
+    [self.btnPreset1 setTitle:[[presets objectAtIndex:0] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
+    [self.btnPreset2 setTitle:[[presets objectAtIndex:1] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
+    [self.btnPreset3 setTitle:[[presets objectAtIndex:2] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
+    [self.btnPreset4 setTitle:[[presets objectAtIndex:3] objectForKey:PresetLabelNameKey] forState:UIControlStateNormal];
 }
 
 - (void)viewDidClose {
@@ -308,7 +361,7 @@
             }
         }
             break;
-        case 3: {
+        case 141: {
             [self updateControllerState:NO];
             NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset1"];
             for (NSDictionary *dict in array) {
@@ -317,7 +370,7 @@
         }
 //            [CoAPSocketUtils sendSocket:"{\"b\":55}" withIP:ip_addr];
             break;
-        case 4: {
+        case 142: {
             [self updateControllerState:NO];
             NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset2"];
             for (NSDictionary *dict in array) {
@@ -327,7 +380,7 @@
 //            ChangeDimmingValue(110, ip_addr);
 //            [CoAPSocketUtils sendSocket:"{\"b\":110}" withIP:ip_addr];
             break;
-        case 5: {
+        case 143: {
             [self updateControllerState:NO];
             NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset3"];
             for (NSDictionary *dict in array) {
@@ -337,7 +390,7 @@
 //            ChangeDimmingValue(165, ip_addr);
 //            [CoAPSocketUtils sendSocket:"{\"b\":165}" withIP:ip_addr];
             break;
-        case 6: {
+        case 144: {
             [self updateControllerState:NO];
             NSArray *array = [ConfigurationManager getLightsInfoWithPresetName:@"preset4"];
             for (NSDictionary *dict in array) {

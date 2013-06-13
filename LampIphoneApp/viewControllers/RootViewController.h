@@ -26,6 +26,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *btn5;
 @property (strong, nonatomic) IBOutlet UIButton *btn6;
 
+@property (strong, nonatomic) UIButton *btnPreset1;
+@property (strong, nonatomic) UIButton *btnPreset2;
+@property (strong, nonatomic) UIButton *btnPreset3;
+@property (strong, nonatomic) UIButton *btnPreset4;
+
 @property (strong, nonatomic) IBOutlet UISlider *sli;
 
 @end

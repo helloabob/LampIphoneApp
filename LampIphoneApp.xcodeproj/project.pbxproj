@@ -73,6 +73,7 @@
 		2DD4351C1760264E00950BA3 /* PresetConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4351A1760264C00950BA3 /* PresetConfigViewController.m */; };
 		2DD4351D1760264E00950BA3 /* PresetConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD4351B1760264D00950BA3 /* PresetConfigViewController.xib */; };
 		2DD4352117606D0200950BA3 /* OfficeDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4352017606D0200950BA3 /* OfficeDetailInfoView.m */; };
+		2DD435231761CEB600950BA3 /* preset_button_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD435221761CEB600950BA3 /* preset_button_icon.png */; };
 		2DE27F5A1756E5AD00AF109E /* highlight_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE27F591756E5AD00AF109E /* highlight_back.png */; };
 		2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */; };
 		2DE27F611757233D00AF109E /* DeviceConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */; };
@@ -203,6 +204,7 @@
 		2DD4351B1760264D00950BA3 /* PresetConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresetConfigViewController.xib; sourceTree = "<group>"; };
 		2DD4351F17606D0200950BA3 /* OfficeDetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfficeDetailInfoView.h; sourceTree = "<group>"; };
 		2DD4352017606D0200950BA3 /* OfficeDetailInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfficeDetailInfoView.m; sourceTree = "<group>"; };
+		2DD435221761CEB600950BA3 /* preset_button_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preset_button_icon.png; sourceTree = "<group>"; };
 		2DE27F591756E5AD00AF109E /* highlight_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight_back.png; sourceTree = "<group>"; };
 		2DE27F5B1756E7ED00AF109E /* ConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationManager.h; sourceTree = "<group>"; };
 		2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationManager.m; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		2DCB75CD17531BC6000718F2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DD435221761CEB600950BA3 /* preset_button_icon.png */,
 				2DD4350E175F98FC00950BA3 /* cbx00.png */,
 				2DD4350F175F98FC00950BA3 /* cbx01.png */,
 				2DD43509175ED77A00950BA3 /* wifi.png */,
@@ -605,6 +608,7 @@
 				2DD43513175F9CC200950BA3 /* btn_right.png in Resources */,
 				2DD435181760207700950BA3 /* PresetListViewController.xib in Resources */,
 				2DD4351D1760264E00950BA3 /* PresetConfigViewController.xib in Resources */,
+				2DD435231761CEB600950BA3 /* preset_button_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,7 +737,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LampIphoneApp/LampIphoneApp-Prefix.pch";
 				INFOPLIST_FILE = "LampIphoneApp/LampIphoneApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LampIphoneApp/vend/ZBarSDK\"",
@@ -752,7 +756,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LampIphoneApp/LampIphoneApp-Prefix.pch";
 				INFOPLIST_FILE = "LampIphoneApp/LampIphoneApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LampIphoneApp/vend/ZBarSDK\"",

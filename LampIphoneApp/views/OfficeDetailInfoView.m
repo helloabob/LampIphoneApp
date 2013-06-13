@@ -35,12 +35,12 @@
         // Initialization code
         offsety = self.frame.size.height;
         cy = self.center.y;
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:235.0/255.0 blue:250.0/255.0 alpha:1];
         
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
-        line.backgroundColor = [UIColor blackColor];
-        [self addSubview:line];
-        [line release];
+//        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+//        line.backgroundColor = [UIColor blackColor];
+//        [self addSubview:line];
+//        [line release];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(47, 18, 107, 21)];
         label.backgroundColor = [UIColor clearColor];
@@ -149,12 +149,14 @@
     flag = [[userInfo objectForKey:DetailIOKey] intValue];
     if (flag == 1) {
         lblPower.text = [NSString stringWithFormat:@"%.2f(w)",CalculatePowerRate(dimming)];
+        slider.enabled = YES;
     } else {
         lblPower.text = @"0.00(w)";
+        slider.enabled = NO;
     }
     int hours = [[userInfo objectForKey:DetailRunningHourKey] intValue];
     int mins = [[userInfo objectForKey:DetailRunningMinuteKey] intValue];
-    lblRunning.text = [NSString stringWithFormat:@"%dh %dm", hours, mins];
+    lblRunning.text = [NSString stringWithFormat:@"%dH %dM", hours, mins];
 }
 
 - (void)showWithAnimated:(BOOL)animated {

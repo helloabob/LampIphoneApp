@@ -67,36 +67,36 @@
     NSDictionary *preset1 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset1",
                              PresetNameKey,
-                             @"preset1",
+                             @"Desk Work",
                              PresetLabelNameKey,
-                             [NSArray arrayWithObjects:@"light_01:50",@"light_02:100",@"light_03:150",@"light_04:200", nil],
+                             [NSArray arrayWithObjects:@"light_01:130",@"light_02:128",@"light_03:130",@"light_04:134", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset1];
     
     NSDictionary *preset2 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset2",
                              PresetNameKey,
-                             @"preset1",
+                             @"Meeting",
                              PresetLabelNameKey,
-                             [NSArray arrayWithObjects:@"light_01:100",@"light_02:100",@"light_03:150",@"light_04:200", nil],
+                             [NSArray arrayWithObjects:@"light_01:75",@"light_02:132",@"light_03:170",@"light_04:175", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset2];
     
     NSDictionary *preset3 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset3",
                              PresetNameKey,
-                             @"preset1",
+                             @"PPT",
                              PresetLabelNameKey,
-                             [NSArray arrayWithObjects:@"light_01:0",@"light_02:100",@"light_03:150",@"light_04:200", nil],
+                             [NSArray arrayWithObjects:@"light_01:20",@"light_02:132",@"light_03:22",@"light_04:135", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset3];
     
     NSDictionary *preset4 = [NSDictionary dictionaryWithObjectsAndKeys:
                              @"preset4",
                              PresetNameKey,
-                             @"preset1",
+                             @"Rest",
                              PresetLabelNameKey,
-                             [NSArray arrayWithObjects:@"light_01:200",@"light_02:100",@"light_03:150",@"light_04:200", nil],
+                             [NSArray arrayWithObjects:@"light_01:32",@"light_02:32",@"light_03:81",@"light_04:83", nil],
                              PresetDeviceNameKey,nil];
     [arrayPreset addObject:preset4];
     
