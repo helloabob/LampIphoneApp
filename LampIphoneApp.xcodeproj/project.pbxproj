@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D89FEE8176EF4FD00F4D4BD /* c2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89FEE2176EF4FD00F4D4BD /* c2.png */; };
+		2D89FEE9176EF4FD00F4D4BD /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89FEE3176EF4FD00F4D4BD /* p1.png */; };
+		2D89FEEA176EF4FD00F4D4BD /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89FEE4176EF4FD00F4D4BD /* p2.png */; };
+		2D89FEEB176EF4FD00F4D4BD /* p3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89FEE5176EF4FD00F4D4BD /* p3.png */; };
+		2D89FEEC176EF4FD00F4D4BD /* p4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89FEE6176EF4FD00F4D4BD /* p4.png */; };
+		2D89FEED176EF4FD00F4D4BD /* s1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89FEE7176EF4FD00F4D4BD /* s1.png */; };
+		2D89FEF1176EF52900F4D4BD /* SceneChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FEEF176EF52900F4D4BD /* SceneChangeViewController.m */; };
+		2D89FEF2176EF52900F4D4BD /* SceneChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D89FEF0176EF52900F4D4BD /* SceneChangeViewController.xib */; };
+		2D89FEF6176EFAF900F4D4BD /* VolumeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89FEF5176EFAF900F4D4BD /* VolumeBar.m */; };
 		2DC1A01F175C3F2A000FBB29 /* light_icon_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC1A01E175C3F2A000FBB29 /* light_icon_selected.png */; };
 		2DC1A022175C5E81000FBB29 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1A021175C5E81000FBB29 /* Common.m */; };
 		2DC5756D17559C3D009621EB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5756C17559C3D009621EB /* icon.png */; };
@@ -89,6 +98,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D89FEE2176EF4FD00F4D4BD /* c2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c2.png; sourceTree = "<group>"; };
+		2D89FEE3176EF4FD00F4D4BD /* p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1.png; sourceTree = "<group>"; };
+		2D89FEE4176EF4FD00F4D4BD /* p2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p2.png; sourceTree = "<group>"; };
+		2D89FEE5176EF4FD00F4D4BD /* p3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p3.png; sourceTree = "<group>"; };
+		2D89FEE6176EF4FD00F4D4BD /* p4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4.png; sourceTree = "<group>"; };
+		2D89FEE7176EF4FD00F4D4BD /* s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s1.png; sourceTree = "<group>"; };
+		2D89FEEE176EF52900F4D4BD /* SceneChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneChangeViewController.h; sourceTree = "<group>"; };
+		2D89FEEF176EF52900F4D4BD /* SceneChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneChangeViewController.m; sourceTree = "<group>"; };
+		2D89FEF0176EF52900F4D4BD /* SceneChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SceneChangeViewController.xib; sourceTree = "<group>"; };
+		2D89FEF4176EFAF900F4D4BD /* VolumeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeBar.h; sourceTree = "<group>"; };
+		2D89FEF5176EFAF900F4D4BD /* VolumeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeBar.m; sourceTree = "<group>"; };
 		2DC1A01E175C3F2A000FBB29 /* light_icon_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_icon_selected.png; sourceTree = "<group>"; };
 		2DC1A020175C5E81000FBB29 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		2DC1A021175C5E81000FBB29 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
@@ -243,6 +263,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D89FEE1176EF4FD00F4D4BD /* v2 */ = {
+			isa = PBXGroup;
+			children = (
+				2D89FEE2176EF4FD00F4D4BD /* c2.png */,
+				2D89FEE3176EF4FD00F4D4BD /* p1.png */,
+				2D89FEE4176EF4FD00F4D4BD /* p2.png */,
+				2D89FEE5176EF4FD00F4D4BD /* p3.png */,
+				2D89FEE6176EF4FD00F4D4BD /* p4.png */,
+				2D89FEE7176EF4FD00F4D4BD /* s1.png */,
+			);
+			path = v2;
+			sourceTree = "<group>";
+		};
+		2D89FEF3176EFAF900F4D4BD /* VolumeBar */ = {
+			isa = PBXGroup;
+			children = (
+				2D89FEF4176EFAF900F4D4BD /* VolumeBar.h */,
+				2D89FEF5176EFAF900F4D4BD /* VolumeBar.m */,
+			);
+			path = VolumeBar;
+			sourceTree = "<group>";
+		};
 		2DCB7598175317E3000718F2 = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +384,9 @@
 				2DD435191760264B00950BA3 /* PresetConfigViewController.h */,
 				2DD4351A1760264C00950BA3 /* PresetConfigViewController.m */,
 				2DD4351B1760264D00950BA3 /* PresetConfigViewController.xib */,
+				2D89FEEE176EF52900F4D4BD /* SceneChangeViewController.h */,
+				2D89FEEF176EF52900F4D4BD /* SceneChangeViewController.m */,
+				2D89FEF0176EF52900F4D4BD /* SceneChangeViewController.xib */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -349,6 +394,7 @@
 		2DCB75CD17531BC6000718F2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2D89FEE1176EF4FD00F4D4BD /* v2 */,
 				2DD435221761CEB600950BA3 /* preset_button_icon.png */,
 				2DD4350E175F98FC00950BA3 /* cbx00.png */,
 				2DD4350F175F98FC00950BA3 /* cbx01.png */,
@@ -395,6 +441,7 @@
 		2DCB75F617544964000718F2 /* vend */ = {
 			isa = PBXGroup;
 			children = (
+				2D89FEF3176EFAF900F4D4BD /* VolumeBar */,
 				2DD43505175ED41100950BA3 /* MBProgressHUD */,
 				2DD434EA175DDF6000950BA3 /* JSON */,
 				2DD434BB175C875800950BA3 /* ZBarSDK */,
@@ -609,6 +656,13 @@
 				2DD435181760207700950BA3 /* PresetListViewController.xib in Resources */,
 				2DD4351D1760264E00950BA3 /* PresetConfigViewController.xib in Resources */,
 				2DD435231761CEB600950BA3 /* preset_button_icon.png in Resources */,
+				2D89FEE8176EF4FD00F4D4BD /* c2.png in Resources */,
+				2D89FEE9176EF4FD00F4D4BD /* p1.png in Resources */,
+				2D89FEEA176EF4FD00F4D4BD /* p2.png in Resources */,
+				2D89FEEB176EF4FD00F4D4BD /* p3.png in Resources */,
+				2D89FEEC176EF4FD00F4D4BD /* p4.png in Resources */,
+				2D89FEED176EF4FD00F4D4BD /* s1.png in Resources */,
+				2D89FEF2176EF52900F4D4BD /* SceneChangeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +702,8 @@
 				2DD435171760207700950BA3 /* PresetListViewController.m in Sources */,
 				2DD4351C1760264E00950BA3 /* PresetConfigViewController.m in Sources */,
 				2DD4352117606D0200950BA3 /* OfficeDetailInfoView.m in Sources */,
+				2D89FEF1176EF52900F4D4BD /* SceneChangeViewController.m in Sources */,
+				2D89FEF6176EFAF900F4D4BD /* VolumeBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

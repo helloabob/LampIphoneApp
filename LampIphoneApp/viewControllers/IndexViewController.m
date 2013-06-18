@@ -14,6 +14,8 @@
 
 #import "AppDelegate.h"
 
+#import "SceneChangeViewController.h"
+
 @interface IndexViewController () {
 //    NSString *scanResult;
 }
@@ -97,7 +99,8 @@
     }
     if (canFind) {
         [Common setCurrentOfficeName:self.txtRoom.text];
-        RootViewController *detailViewController = [[RootViewController alloc] init];
+        SceneChangeViewController *detailViewController = [[SceneChangeViewController alloc] init];
+//        RootViewController *detailViewController = [[RootViewController alloc] init];
         [self.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release];
     } else {
@@ -268,6 +271,9 @@
     // Navigation logic may go here. Create and push another view controller.
     
     RootViewController *detailViewController = [[RootViewController alloc] init];
+    
+//    SceneChangeViewController *detailViewController = [[SceneChangeViewController alloc] init];
+    
 //    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
 //    detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
 //    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
