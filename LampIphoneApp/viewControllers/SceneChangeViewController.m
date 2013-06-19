@@ -16,6 +16,8 @@
 
 #import "CoAPSocketUtils.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 static BOOL isOn = YES;
 
 @interface SceneChangeViewController () {
@@ -189,6 +191,7 @@ static BOOL isOn = YES;
     [btn setTitleColor:app_philips_color forState:UIControlStateNormal];
     [btn setTitle:@"ON / OFF" forState:UIControlStateNormal];
     [btn.titleLabel setFont:app_philips_label_font_size];
+    btn.layer.cornerRadius = 15.0f;
     btn.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 70);
     btn.tag = 111;
     [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];

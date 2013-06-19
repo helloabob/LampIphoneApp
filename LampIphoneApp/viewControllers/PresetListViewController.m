@@ -14,6 +14,8 @@
 
 #import "MBProgressHUD.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @interface PresetListViewController () {
 }
 
@@ -50,6 +52,29 @@
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setBackgroundColor:[UIColor whiteColor]];
+    btn.frame = CGRectMake(0, 0, 305, 45);
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitle:@"Reset All Presets" forState:UIControlStateNormal];
+    [btn.titleLabel setFont:app_philips_label_font_size];
+    btn.layer.cornerRadius = 15.0f;
+    btn.layer.borderWidth = 1.0f;
+    btn.layer.borderColor = [[UIColor colorWithRed:172.0/255.0 green:172.0/255.0 blue:172.0/255.0 alpha:1.0f] CGColor];
+    btn.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 120);
+    btn.tag = 111;
+    [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+}
+
+- (void)btnTapped:(id)sender {
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    hud.labelText = @"Reseting...";
+    [self.navigationController.view addSubview:hud];
+    [hud show:YES];
+    [hud hide:YES afterDelay:1.0f];
+    [ConfigurationManager resetAllPresets];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -79,13 +104,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.arrayMenu.count + 1;
+    return self.arrayMenu.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell1";
-    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...

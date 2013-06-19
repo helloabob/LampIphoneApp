@@ -27,6 +27,7 @@
 @synthesize ip_dict = _ip_dict;
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
     self.slider4 = nil;
     self.slider3 = nil;
     self.slider2 = nil;
@@ -109,8 +110,16 @@
     self.txtLabelName.returnKeyType = UIReturnKeyDone;
     self.txtLabelName.delegate = self;
     self.txtLabelName.clearButtonMode = UITextFieldViewModeWhileEditing;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(txtValueChanged:) name:UITextFieldTextDidChangeNotification object:nil];
     
 //    [dict release];
+}
+
+- (void)txtValueChanged:(NSNotification *)noti {
+    if (self.txtLabelName.text.length > 10) {
+        self.txtLabelName.text = [self.txtLabelName.text substringToIndex:10];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
