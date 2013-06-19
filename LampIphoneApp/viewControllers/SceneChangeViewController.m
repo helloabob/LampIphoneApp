@@ -34,6 +34,7 @@ static BOOL isOn = YES;
 @synthesize lblValue = _lblValue;
 
 - (void)dealloc {
+    NSLog(@"SceneChangeViewController_dealloc");
     isOn = YES;
     self.lblValue = nil;
     self.btn3 = nil;

@@ -81,7 +81,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"PHILIPS";
+    self.title = @"Light Config";
     
 //    [self.navigationItem.backBarButtonItem setTitle:@"Back"];
     [self.navigationItem hidesBackButton];
