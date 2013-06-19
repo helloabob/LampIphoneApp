@@ -53,7 +53,7 @@ enum {
     
     self.title = @"System Config";
     
-    arrayMenu = [[NSArray alloc] initWithObjects:@"Preset Configuration", @"Light Configuration", nil];
+    arrayMenu = [[NSArray alloc] initWithObjects:@"Preset Configuration", @"Light Status", nil];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;

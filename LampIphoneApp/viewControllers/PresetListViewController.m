@@ -59,7 +59,7 @@
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn setTitle:@"Reset All Presets" forState:UIControlStateNormal];
     [btn.titleLabel setFont:app_philips_label_font_size];
-    btn.layer.cornerRadius = 15.0f;
+    btn.layer.cornerRadius = 10.0f;
     btn.layer.borderWidth = 1.0f;
     btn.layer.borderColor = [[UIColor colorWithRed:172.0/255.0 green:172.0/255.0 blue:172.0/255.0 alpha:1.0f] CGColor];
     btn.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 120);

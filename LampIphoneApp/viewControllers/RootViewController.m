@@ -81,10 +81,11 @@
     // Do any additional setup after loading the view from its nib.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"Light Config";
+    self.title = @"Light Status";
     
 //    [self.navigationItem.backBarButtonItem setTitle:@"Back"];
-    [self.navigationItem hidesBackButton];
+//    [self.navigationItem hidesBackButton];
+//    [self.navigationItem setHidesBackButton:YES];
     
     btnEnabled = [UIButton buttonWithType:UIButtonTypeCustom];
     btnEnabled.frame = CGRectMake(20, 381, 20, 20);
