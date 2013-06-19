@@ -43,7 +43,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"System Config";
+    self.title = @"Preset Config";
     
     
 //    arrayMenu = [[NSArray alloc] initWithObjects:@"preset1", @"preset2", @"preset3", @"preset4", nil];

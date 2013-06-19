@@ -115,6 +115,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    if (textField.text.length > 10) {
+        textField.text = [textField.text substringToIndex:10];
+    }
     return YES;
 }
 
@@ -133,6 +136,9 @@
 - (void)btnSaveTapped {
     NSArray *array = [ConfigurationManager objectForKey:PresetUserDefaultKey];
     NSMutableArray *dict = nil;
+    if (self.txtLabelName.text.length > 10) {
+        self.txtLabelName.text = [self.txtLabelName.text substringToIndex:10];
+    }
     for (NSMutableDictionary *tmp in array) {
         if ([[tmp objectForKey:PresetNameKey] isEqualToString:self.title]) {
             dict = [tmp objectForKey:PresetDeviceNameKey];

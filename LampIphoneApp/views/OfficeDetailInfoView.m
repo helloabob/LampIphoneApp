@@ -111,12 +111,12 @@
         [self addSubview:slider];
         [slider release];
         
-        UIButton *btn = [UIButton buttonWithType:110];
-        btn.frame = CGRectMake(150, 170, 120, 35);
-        [btn setTitle:@"Back" forState:UIControlStateNormal];
-        btn.center = CGPointMake(self.center.x, btn.center.y);
-        [btn addTarget:self action:@selector(btnCloseTapped) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btn];
+//        UIButton *btn = [UIButton buttonWithType:110];
+//        btn.frame = CGRectMake(150, 170, 120, 35);
+//        [btn setTitle:@"Back" forState:UIControlStateNormal];
+//        btn.center = CGPointMake(self.center.x, btn.center.y);
+//        [btn addTarget:self action:@selector(btnCloseTapped) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:btn];
     }
     return self;
 }

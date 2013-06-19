@@ -192,6 +192,7 @@
     [btn setImage:[UIImage imageNamed:@"light_icon_selected"] forState:UIControlStateSelected];
     btn.frame = CGRectMake(100, 43, 45, 45);
     btn.tag = 121;
+    [btn setSelected:YES];
     [btn addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
@@ -251,22 +252,27 @@
     self.btn5.titleLabel.font = app_philips_button_font_size;
     self.btn6.titleLabel.font = app_philips_button_font_size;
     
-    UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btnRight setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
-    btnRight.frame = CGRectMake(0, 0, 30, 30);
-    [btnRight addTarget:self action:@selector(gotoSettingView) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
-    self.navigationItem.rightBarButtonItem = item;
+//    UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [btnRight setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
+//    btnRight.frame = CGRectMake(0, 0, 30, 30);
+//    [btnRight addTarget:self action:@selector(gotoSettingView) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
+//    self.navigationItem.rightBarButtonItem = item;
     
 //    [self.sli addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
     [self.sli addTarget:self action:@selector(dimmingChanged:) forControlEvents:UIControlEventValueChanged];
     
-    [item release];
+//    [item release];
     
     detailView = [[OfficeDetailInfoView alloc] initWithFrame:CGRectMake(0, 196, 320, self.view.frame.size.height-196)];
     [self.view addSubview:detailView];
     detailView.delegate = self;
     [detailView hideWithAnimated:NO];
+    
+//    [self unSelectAllLightButton];
+    //[btn setSelected:YES];
+    [detailView updateControlInfo:[self getDetailInfo:light1]];
+    [detailView showWithAnimated:NO];
     
 //    UIBarButtonItem *itemHome = [[UIBarButtonItem alloc] initWithTitle:@"Office List" style:UIBarButtonItemStyleDone target:self action:@selector(gotoOfficeList)];
 //    self.navigationItem.leftBarButtonItem = itemHome;

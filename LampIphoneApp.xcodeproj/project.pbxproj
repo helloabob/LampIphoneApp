@@ -87,6 +87,9 @@
 		2DE27F5D1756E7ED00AF109E /* ConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5C1756E7ED00AF109E /* ConfigurationManager.m */; };
 		2DE27F611757233D00AF109E /* DeviceConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */; };
 		2DE27F621757233D00AF109E /* DeviceConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DE27F601757233D00AF109E /* DeviceConfigViewController.xib */; };
+		2DF933A817703570002BF825 /* power_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF933A617703570002BF825 /* power_off.png */; };
+		2DF933A917703570002BF825 /* power_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF933A717703570002BF825 /* power_on.png */; };
+		2DF933AB17704150002BF825 /* WallPaper1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF933AA17704150002BF825 /* WallPaper1.png */; };
 		2DFB50D917584D4D00F02D49 /* DeviceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFB50D717584D4D00F02D49 /* DeviceListViewController.m */; };
 		2DFB50DA17584D4D00F02D49 /* DeviceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DFB50D817584D4D00F02D49 /* DeviceListViewController.xib */; };
 		2DFB50DE1758903A00F02D49 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFB50DC1758903900F02D49 /* IndexViewController.m */; };
@@ -231,6 +234,9 @@
 		2DE27F5E1757233D00AF109E /* DeviceConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceConfigViewController.h; sourceTree = "<group>"; };
 		2DE27F5F1757233D00AF109E /* DeviceConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceConfigViewController.m; sourceTree = "<group>"; };
 		2DE27F601757233D00AF109E /* DeviceConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceConfigViewController.xib; sourceTree = "<group>"; };
+		2DF933A617703570002BF825 /* power_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power_off.png; sourceTree = "<group>"; };
+		2DF933A717703570002BF825 /* power_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power_on.png; sourceTree = "<group>"; };
+		2DF933AA17704150002BF825 /* WallPaper1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WallPaper1.png; sourceTree = "<group>"; };
 		2DFB50D617584D4D00F02D49 /* DeviceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceListViewController.h; sourceTree = "<group>"; };
 		2DFB50D717584D4D00F02D49 /* DeviceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceListViewController.m; sourceTree = "<group>"; };
 		2DFB50D817584D4D00F02D49 /* DeviceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceListViewController.xib; sourceTree = "<group>"; };
@@ -394,6 +400,9 @@
 		2DCB75CD17531BC6000718F2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DF933AA17704150002BF825 /* WallPaper1.png */,
+				2DF933A617703570002BF825 /* power_off.png */,
+				2DF933A717703570002BF825 /* power_on.png */,
 				2D89FEE1176EF4FD00F4D4BD /* v2 */,
 				2DD435221761CEB600950BA3 /* preset_button_icon.png */,
 				2DD4350E175F98FC00950BA3 /* cbx00.png */,
@@ -663,6 +672,9 @@
 				2D89FEEC176EF4FD00F4D4BD /* p4.png in Resources */,
 				2D89FEED176EF4FD00F4D4BD /* s1.png in Resources */,
 				2D89FEF2176EF52900F4D4BD /* SceneChangeViewController.xib in Resources */,
+				2DF933A817703570002BF825 /* power_off.png in Resources */,
+				2DF933A917703570002BF825 /* power_on.png in Resources */,
+				2DF933AB17704150002BF825 /* WallPaper1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

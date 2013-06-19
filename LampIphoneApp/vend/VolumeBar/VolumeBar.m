@@ -8,11 +8,11 @@
 
 #import "VolumeBar.h"
 
-#define CIRCLE_X                        (58.0f)
-#define CIRCLE_Y                        (60.0f)
+#define CIRCLE_X                        (87.0f)
+#define CIRCLE_Y                        (85.0f)
 #define START_ANGLE                     (-40.0f)
 #define END_ANGLE                       (220.0f)
-#define CONTROL_CIRCLE_RADIUS           (40.0f)
+#define CONTROL_CIRCLE_RADIUS           (65.0f)
 #define VOLUME_CIRCLE_RADIUS            (66.0f)
 
 #define DEGREES_TO_RADIANS(_degrees)    ((M_PI * (_degrees))/180)

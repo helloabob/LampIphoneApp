@@ -12,6 +12,8 @@
 
 #import "PresetListViewController.h"
 
+#import "RootViewController.h"
+
 enum {
     PresetConfigRow = 0,
     DeviceConfigRow,
@@ -50,7 +52,7 @@ enum {
     
     self.title = @"System Config";
     
-    arrayMenu = [[NSArray alloc] initWithObjects:@"Preset Configuration", @"Device Configuration", nil];
+    arrayMenu = [[NSArray alloc] initWithObjects:@"Preset Configuration", @"Light Configuration", nil];
     
     self.tblSystem.delegate = self;
     self.tblSystem.dataSource = self;
@@ -100,9 +102,9 @@ enum {
 //        DeviceListViewController *deviceViewController = [[DeviceListViewController alloc] init];
 //        [self.navigationController pushViewController:deviceViewController animated:YES];
 //        [deviceViewController release];
-        OfficeDetailViewController *detailViewController = [[OfficeDetailViewController alloc] init];
+        RootViewController *detailViewController = [[RootViewController alloc] init];
 //        detailViewController.title = [[self.arrayMenu objectAtIndex:indexPath.row] objectForKey:OfficeNameKey];
-        detailViewController.roomIndex = indexPath.row;
+//        detailViewController.roomIndex = indexPath.row;
         // ...
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:detailViewController animated:YES];
