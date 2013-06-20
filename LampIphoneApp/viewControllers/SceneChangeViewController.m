@@ -186,11 +186,13 @@ static BOOL isOn = YES;
     [self.view sendSubviewToBack:backView];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setBackgroundColor:[UIColor whiteColor]];
+//    [btn setBackgroundColor:[UIColor whiteColor]];
+//    [btn setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:211.0/255.0 blue:198.0/255.0 alpha:1.0f]];
+    [btn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
     btn.frame = CGRectMake(0, 0, 245, 40);
     [btn setTitleColor:app_philips_color forState:UIControlStateNormal];
-    [btn setTitle:@"ON / OFF" forState:UIControlStateNormal];
-    [btn.titleLabel setFont:app_philips_label_font_size];
+    [btn setTitle:@"ON  /  OFF" forState:UIControlStateNormal];
+    [btn.titleLabel setFont:app_philips_button_font_size];
     btn.layer.cornerRadius = 10.0f;
     btn.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 70);
     btn.tag = 111;
