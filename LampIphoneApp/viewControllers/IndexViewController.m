@@ -200,7 +200,8 @@
     }
     if (canFind) {
         [Common setCurrentOfficeName:self.scanResult];
-        RootViewController *detailViewController = [[RootViewController alloc] init];
+        SceneChangeViewController *detailViewController = [[SceneChangeViewController alloc] init];
+//        RootViewController *detailViewController = [[RootViewController alloc] init];
         [self.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release];
     } else {
